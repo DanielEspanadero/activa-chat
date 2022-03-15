@@ -1,0 +1,13 @@
+{
+  "name": "activa-xat-client",
+  "version": "1.0.0",
+  "description": "Server for the web application of activa-chat the chat of Barcelona activa.",
+  "main": "index.js",
+  "scripts": {
+        "dev": "nodemon dist/app",
+        "start": "node dist/app"
+  },
+  "keywords": [],
+  "author": "Daniel Españadero",
+  "license": "ISC"
+}
