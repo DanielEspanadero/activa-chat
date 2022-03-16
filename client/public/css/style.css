@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: 'SecularOne';
+    src: url('../assets/fonts/SecularOne-Regular.ttf');
+}

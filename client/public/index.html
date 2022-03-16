@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="cat">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id"
+        content="262719378408-8u304bnuretvdp264ipa54rsr5ravht2.apps.googleusercontent.com">
+    <link rel="icon" href="./assets/img/activa-ico.ico">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Activa Chat</title>
+</head>
+
+<body id="body" class="flex">
+    <!-- <header id="lang">
+        <a href="./html/es/login.html">Es</a>
+        <p>|</p>
+        <a href="./html/cat/login.html">Cat</a>
+        <p>|</p>
+        <a href="#">En</a>
+    </header> -->
+    <main id="main">
+        <div id="login-container" class="flex">
+            <div id="login-cont-inside" class="flex">
+                <h1>Activa Chat</h1>
+                <!-- <h2>Login</h2> -->
+                <form id="login-form-container">
+                    <input class="input" type="email" name="email" placeholder="Email" required>
+                    <input class="input" type="password" name="password" placeholder="password" required>
+                    <button class="button" type="submit">Login</button>
+                </form>
+                <br>
+                <p>----OR----</p>
+                <br>
+                <div id="my-signin2"></div>
+                <br>
+                <a href="./html/en/forgot-pass.html">Forgot my password</a>
+                <div id="register">
+                    <p>If you don't have an account, create</p>
+                    <button>Register</button>
+                </div>
+            </div>
+        </div>
+        <div id="img-container" class="flex">
+            <img src="./assets/img/software-1.jpeg" alt="software programmer">
+        </div>
+    </main>
+</body>
+
+<script>
+    function onSuccess(googleUser) {
+        console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+        console.log(error);
+    }
+    function renderButton() {
+        gapi.signin2.render('my-signin2', {
+            'scope': 'profile email',
+            'width': 200,
+            'height': 45,
+            'longtitle': true,
+            'theme': 'dark',
+            'onsuccess': onSuccess,
+            'onfailure': onFailure
+        });
+    }
+</script>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+
+</html>

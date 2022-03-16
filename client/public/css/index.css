@@ -1,0 +1,154 @@
+#body {
+    color: #516188;
+    width: 100vw;
+    height: 100vh;
+    background: #f7fbfc;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-container {
+    text-align: center;
+}
+
+#my-signin2 {
+    display: flex;
+}
+
+#lang {
+    display:block;
+    position: absolute;
+}
+
+.input {
+    margin: .5em;
+    height: 3.5em;
+    width: 22em;
+    padding: 0 2em 0 2em;
+    color: #516188;
+    border-radius: 1em;
+    background-color: #fff;
+    font-family: 'SecularOne';
+    font-size: .8em;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #516188;
+}
+
+.input:hover {
+    background-color: #51618899;
+    border-bottom: 2px solid #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.input:focus {
+    background-color: #7885a8;
+    color: #fff;
+    border: none;
+}
+
+.button {
+    background-color: #516188;
+    width: 8em;
+    margin-top: 1em;
+    color: #fff;
+    border-radius: 1em;
+    font-size: 1.5em;
+    padding: .3em;
+    border: none;
+    border-bottom: 2px solid #000;
+}
+
+.button:hover {
+    background-color: #8594b8;
+    cursor: pointer;
+}
+
+.button:active {
+    border: none;
+}
+
+#register {
+    display: flex;
+}
+
+#register>button {
+    margin-left: 1em;
+    border: none;
+    color: #516188;
+    background-color: #fff;
+    padding: 0 1em 0 1em;
+    border-radius: .8em;
+    border-bottom: 1px solid #000;
+}
+
+#register>button:hover {
+    background-color: #eee;
+}
+
+#register>button:active {
+    border: none;
+}
+
+/* #main{
+    border:1px solid green; 
+} */
+
+@media screen and (min-width:768px) {
+    #main {
+        border-radius: 30px;
+        width: 90%;
+        height: 80%;
+        background-color: #e2ecf6;
+        box-shadow: 1px 1px 1px #51618855 inset;
+        overflow: hidden;
+    }
+
+    #login-container {
+        width: 50%;
+        float: left;
+        height: 100%;
+        font-family: 'SecularOne';
+    }
+
+    #img-container {
+        width: 50%;
+        height: 100%;
+        float: right;
+    }
+
+    #login-cont-inside {
+        flex-direction: column;
+        width: 70%;
+        height: 70%;
+    }
+
+    #login-cont-inside>h1 {
+        font-size: 3em;
+    }
+
+    #img-container>img {
+        border-radius: 30px;
+        width: 90%;
+        height: 70%;
+        opacity: 70%;
+        box-shadow: 2px 2px 1px #fff7 inset;
+        transition: all 1s;
+    }
+
+    #img-container>img:hover {
+        opacity: 80%;
+    }
+}
