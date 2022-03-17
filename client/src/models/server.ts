@@ -5,6 +5,7 @@ import path from 'path';
 import routerLogin from '../routes/login';
 import routerForgotPass from '../routes/forgot-pass';
 import routerRegiter from '../routes/register';
+import routerChat from '../routes/chat';
 
 class Server {
     private app: Application;
@@ -12,7 +13,8 @@ class Server {
     private path: any = {
         login: '/login',
         forgotPass: '/forgot-pass',
-        register: '/register'
+        register: '/register',
+        chat: '/chat'
     }
 
     constructor() {
@@ -34,6 +36,7 @@ class Server {
         this.app.use(this.path.login, routerLogin);
         this.app.use(this.path.forgotPass, routerForgotPass);
         this.app.use(this.path.register, routerRegiter);
+        this.app.use(this.path.chat, routerChat);
     }
 
     listen() {

@@ -84,7 +84,7 @@
     display: flex;
 }
 
-#register>button {
+#register>a>button {
     margin-left: 1em;
     border: none;
     color: #516188;
@@ -94,11 +94,11 @@
     border-bottom: 1px solid #000;
 }
 
-#register>button:hover {
+#register>a>button:hover {
     background-color: #eee;
 }
 
-#register>button:active {
+#register>a>button:active {
     border: none;
 }
 

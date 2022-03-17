@@ -1,0 +1,49 @@
+#all-container {
+    display: flex;
+}
+
+#rooms-container {
+    height: 100vh;
+    width: 25%;
+
+    border: 1px solid #f00;
+}
+
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 50%;
+}
+
+#contacts-container {
+    height: 100vh;
+    width: 25%;
+
+    border: 1px solid #0f0;
+}
+
+.headers {
+    position: fixed;
+    height: 10%;
+    width: 100%;
+
+    border-bottom: 1px solid #000;
+}
+
+#main-chat{
+    /* position: relative; */
+    margin-top:10vh;
+    height:80%;
+    width:100%;
+    background-color:#000;
+
+    border: 1px solid #ff0;
+}
+
+#footer-chat {
+    margin-top:20%;
+    height: 10%;
+    width: 100%;
+    border-top: 1px solid #000;
+}
