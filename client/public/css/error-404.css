@@ -1,0 +1,5 @@
+body {
+    overflow: hidden;
+    background-image: url('../assets/img/404-error.jpeg');
+    background-size: cover;
+}

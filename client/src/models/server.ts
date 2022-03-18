@@ -6,6 +6,7 @@ import routerLogin from '../routes/login';
 import routerForgotPass from '../routes/forgot-pass';
 import routerRegiter from '../routes/register';
 import routerChat from '../routes/chat';
+import router404 from '../routes/404';
 
 class Server {
     private app: Application;
@@ -14,7 +15,8 @@ class Server {
         login: '/login',
         forgotPass: '/forgot-pass',
         register: '/register',
-        chat: '/chat'
+        chat: '/chat',
+        error404: '*'
     }
 
     constructor() {
@@ -37,6 +39,7 @@ class Server {
         this.app.use(this.path.forgotPass, routerForgotPass);
         this.app.use(this.path.register, routerRegiter);
         this.app.use(this.path.chat, routerChat);
+        this.app.use(this.path.error404, router404);
     }
 
     listen() {

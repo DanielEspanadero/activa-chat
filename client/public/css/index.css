@@ -81,6 +81,14 @@
     border: none;
 }
 
+#link {
+    color: #000;
+}
+
+#link:hover {
+    color: #444;
+}
+
 /* #main{
     border:1px solid green; 
 } */

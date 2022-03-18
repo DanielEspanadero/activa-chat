@@ -10,13 +10,15 @@ const login_1 = __importDefault(require("../routes/login"));
 const forgot_pass_1 = __importDefault(require("../routes/forgot-pass"));
 const register_1 = __importDefault(require("../routes/register"));
 const chat_1 = __importDefault(require("../routes/chat"));
+const _404_1 = __importDefault(require("../routes/404"));
 class Server {
     constructor() {
         this.path = {
             login: '/login',
             forgotPass: '/forgot-pass',
             register: '/register',
-            chat: '/chat'
+            chat: '/chat',
+            error404: '*'
         };
         this.app = (0, express_1.default)();
         this.port = process.env.PORT || '3000';
@@ -35,6 +37,7 @@ class Server {
         this.app.use(this.path.forgotPass, forgot_pass_1.default);
         this.app.use(this.path.register, register_1.default);
         this.app.use(this.path.chat, chat_1.default);
+        this.app.use(this.path.error404, _404_1.default);
     }
     listen() {
         this.app.listen(this.port, () => {
