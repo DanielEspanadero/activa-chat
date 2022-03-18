@@ -20,9 +20,30 @@
                     <input class="input" type="text" name="search" placeholder="Search">
                 </form>
             </header>
-            <main class="scroll">
+            <main class="scroll aside-main">
             </main>
-            <footer></footer>
+            <footer class="music-zone scroll">
+                <div class="sound">
+                    <button class="play-pause"><img src="../../assets/img/play.png" alt="play"></button>
+                    <button class="play-pause"><img src="../../assets/img/pausa.png" alt="pausa"></button>
+                    <p class="sound-name">Nombre de la canción</p>
+                </div>
+                <div class="sound">
+                    <button class="play-pause"><img src="../../assets/img/play.png" alt="play"></button>
+                    <button class="play-pause"><img src="../../assets/img/pausa.png" alt="pausa"></button>
+                    <p class="sound-name">Nombre de la canción</p>
+                </div>
+                <div class="sound">
+                    <button class="play-pause"><img src="../../assets/img/play.png" alt="play"></button>
+                    <button class="play-pause"><img src="../../assets/img/pausa.png" alt="pausa"></button>
+                    <p class="sound-name">Nombre de la canción</p>
+                </div>
+                <div class="sound">
+                    <button class="play-pause"><img src="../../assets/img/play.png" alt="play"></button>
+                    <button class="play-pause"><img src="../../assets/img/pausa.png" alt="pausa"></button>
+                    <p class="sound-name">Nombre de la canción</p>
+                </div>
+            </footer>
         </aside>
         <main id="chat-container">
 
@@ -34,15 +55,16 @@
                 <div class="message">
                     <img class="avatar" src="../../assets/img/man.png" alt="avatar">
                     <div>
-                        <p id="name">Daniel Españadero</p>
-                        <p id="text-message">Hola</p>
+                        <p class="name">Daniel Españadero</p>
+                        <p class="text-message">Hola</p>
+                        <p class="data">Lunes 21 a las 23:00h</p>
                     </div>
                 </div>
             </main>
 
             <footer id="footer-chat">
                 <form>
-                    <input type="text" placeholder="Write a message..." class="input measures-input-chat">
+                    <input id="input-chat" type="text" placeholder="Write a message..." class="input measures-input-chat">
                     <button type="submit" id="send-button">
                         <img src="../../assets/img/send-button.png" alt="send button">
                     </button>
@@ -56,11 +78,30 @@
                     <input class="input" type="text" name="search" placeholder="Search">
                 </form>
             </header>
-            <main class="scroll">
+            <main class="scroll aside-main">
 
             </main>
+            <footer>
+                <p style="font-size: 50px;" class="prueba">🧑🏻‍💻</p>
+                <button id="emoji-button">Click Me</button>
+            </footer>
         </aside>
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.0.3/dist/index.min.js"></script>
+<script src="../../dist/app.js"></script>
+<script>
+    const button = document.querySelector('#emoji-button');
 
+        const picker = new EmojiButton();
+
+        button.addEventListener('click', () => {
+            picker.togglePicker(button);
+
+        });
+
+        picker.on('emoji', emoji => {
+            document.getElementById('input-chat').value += emoji;
+        });
+</script>
 </html>

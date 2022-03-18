@@ -66,6 +66,7 @@ body {
     background-image: url('../assets/img/background-main-chat.jpeg');
     background-attachment: fixed;
     background-size: cover;
+    padding: .5em 2em .5em 2em;
 }
 
 #main-chat>p {
@@ -124,9 +125,10 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    margin: 1em 2em 0 2em;
+    margin: .5em 0em;
     padding: .5em;
     background-color: #516188bb;
+    font-family: 'SecularOne', Helvetica, sans-serif;
 }
 
 .message>div {
@@ -134,7 +136,64 @@ body {
     margin: 1em;
 }
 
-#name {
+.name {
     font-family: 'SecularOne', Helvetica, sans-serif;
-    color:#000;
+    color: #000;
+}
+
+.data {
+    font-size: .7em;
+    float: right;
+    color: #0d2052;
+    margin: 0 -1em -3em 0;
+}
+
+.aside-main {
+    background-color: #e2ecf6;
+    width: 100%;
+    margin-top: 10vh;
+    height: 50vh;
+    border-bottom: 1px solid #516188;
+}
+
+.music-zone {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 40vh;
+    background-image: url('../assets/img/music-wallpaper.webp');
+    background-size: 100%;
+    background-position: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.sound {
+    display: inline-block;
+    width: 90%;
+    border-radius: 10px;
+    background-color: #e2ecf688;
+    padding: 1em;
+    margin:1em;
+}
+
+.play-pause {
+    border: none;
+    background: #0000;
+    margin-right: 1em;
+    width: 10px;
+}
+
+.play-pause:hover {
+    filter: drop-shadow(2px 2px 2px #516188);
+}
+
+.play-pause:active {
+    filter: drop-shadow(2px 2px 2px #e2ecf6);
+}
+
+.sound-name {
+    font-family: 'SecularOne', Helvetica, sans-serif;
+    color: #b0b9d1;
 }
