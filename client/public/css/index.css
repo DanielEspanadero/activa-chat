@@ -28,36 +28,14 @@
 }
 
 #lang {
-    display:block;
+    display: block;
     position: absolute;
 }
 
-.input {
+.measures-input {
     margin: .5em;
     height: 3.5em;
     width: 22em;
-    padding: 0 2em 0 2em;
-    color: #516188;
-    border-radius: 1em;
-    background-color: #fff;
-    font-family: 'SecularOne';
-    font-size: .8em;
-    border: none;
-    outline: none;
-    border-bottom: 2px solid #516188;
-}
-
-.input:hover {
-    background-color: #51618899;
-    border-bottom: 2px solid #000;
-    color: #fff;
-    cursor: pointer;
-}
-
-.input:focus {
-    background-color: #7885a8;
-    color: #fff;
-    border: none;
 }
 
 .button {
@@ -146,10 +124,5 @@
         height: 70%;
         opacity: 70%;
         box-shadow: 2px 2px 1px #fff7 inset;
-        transition: all 1s;
-    }
-
-    #img-container>img:hover {
-        opacity: 80%;
     }
 }
