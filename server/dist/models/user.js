@@ -19,7 +19,13 @@ const UserSchema = new mongoose_1.Schema({
     avatar: {
         type: String,
         default: 'https://github.com/DanielEspanadero/activa-chat/blob/master/client/public/assets/img/man.png'
+    },
+    date: {
+        type: Date,
+        required: true
     }
+}, {
+    versionKey: false
 });
 exports.User = (0, mongoose_1.model)('User', UserSchema);
 //# sourceMappingURL=user.js.map

@@ -1,4 +1,4 @@
-import {Schema, model} from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 const UserSchema: any = new Schema({
     firstName: {
@@ -17,7 +17,15 @@ const UserSchema: any = new Schema({
     avatar: {
         type: String,
         default: 'https://github.com/DanielEspanadero/activa-chat/blob/master/client/public/assets/img/man.png'
+    },
+    date: {
+        type: Date,
+        required: true
     }
-});
+},
+    {
+        versionKey: false
+    }
+);
 
 export const User = model('User', UserSchema)

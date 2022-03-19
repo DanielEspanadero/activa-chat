@@ -1,10 +1,31 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.registerGet = void 0;
-const registerGet = (req, res) => {
-    res.status(200).json({
-        msg: 'Register get.'
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-exports.registerGet = registerGet;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.registerPost = void 0;
+const user_1 = require("../models/user");
+const registerPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { firstName, lastName, email } = req.body;
+        const date = new Date();
+        const user = yield new user_1.User({ firstName, lastName, email, date });
+        yield user.save();
+        res.status(200).json({ user });
+    }
+    catch (error) {
+        throw new Error(error);
+        // res.status(500).json({
+        //     msg: error
+        // });
+    }
+    ;
+});
+exports.registerPost = registerPost;
 //# sourceMappingURL=register.js.map

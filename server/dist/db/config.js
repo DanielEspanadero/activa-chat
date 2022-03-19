@@ -14,6 +14,7 @@ const mongoose_1 = require("mongoose");
 const dbConnectMongo = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield (0, mongoose_1.connect)(process.env.MONGODB || 'mongodb://localhost:27017/activa-chat');
+        console.log('MongoDB started');
     }
     catch (error) {
         throw new Error('Error to start the database.');

@@ -46,6 +46,7 @@ class Server {
             credentials: true,
             origin: 'http://localhost:3000'
         }));
+        this.app.use(express_1.default.json());
     }
     ;
     routes() {
