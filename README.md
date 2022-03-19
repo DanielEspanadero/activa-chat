@@ -1,6 +1,6 @@
 ## 💬 ACTIVA CHAT 💬
 
-_Chat made as final project of the Node.js course by [Daniel Españadero](https://github.com/DanielEspanadero) at IT Academy Barcelona._
+_Chat made as final project of the Node.js course by [Daniel Españadero](https://github.com/DanielEspanadero) at IT Academy in Barcelona._
 
 ## Starting 🚀
 
@@ -28,80 +28,20 @@ _For the project to work correctly, it is recommended to have a series of progra
 
 ### Installation 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-_Dí cómo será ese paso_
-
+_Remember to execute the following command in the terminal both in the frontend (client/src) and in the backend (server) to install the dependencies and that everything works correctly:_
 ```
-Da un ejemplo
+npm install
 ```
 
-_Y repite_
+## Environment variables .env 🪛
 
+_To use the environment variables and for everything to work correctly, you have to create a file called .env for which you can find a template with the data you need in the .config.env file (Remember that you have to create the file both in the frontend as in the backend)._
+
+## Commands to execute ⌨️
+⚠️ _BEFORE STARTING, REMEMBER TO HAVE THE MONGODB SERVER STARTED_ ⚠️
+
+_Once all the necessary programs and dependencies are installed, simply run the following command on both the frontend and backend:_
 ```
-hasta finalizar
-```
-
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
-
-## Ejecutando las pruebas ⚙️
-
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
+npm start
 ```
 
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
-
-## Construido con 🛠️
-
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
-
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
-## Autores ✒️
-
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* etc.
