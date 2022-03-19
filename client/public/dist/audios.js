@@ -18,24 +18,36 @@
         // Create events when buttons are clicked.
         imaginePlay === null || imaginePlay === void 0 ? void 0 : imaginePlay.addEventListener('click', () => {
             imagineAudio.play();
+            dancingAudio.pause();
+            nirvanaAudio.pause();
+            maybelleneAudio.pause();
         });
         imaginePause === null || imaginePause === void 0 ? void 0 : imaginePause.addEventListener('click', () => {
             imagineAudio.pause();
         });
         dancingPlay === null || dancingPlay === void 0 ? void 0 : dancingPlay.addEventListener('click', () => {
             dancingAudio.play();
+            imagineAudio.pause();
+            nirvanaAudio.pause();
+            maybelleneAudio.pause();
         });
         dancingPause === null || dancingPause === void 0 ? void 0 : dancingPause.addEventListener('click', () => {
             dancingAudio.pause();
         });
         nirvanaPlay === null || nirvanaPlay === void 0 ? void 0 : nirvanaPlay.addEventListener('click', () => {
             nirvanaAudio.play();
+            imagineAudio.pause();
+            dancingAudio.pause();
+            maybelleneAudio.pause();
         });
         nirvanaPause.addEventListener('click', () => {
             nirvanaAudio.pause();
         });
         maybellenePlay.addEventListener('click', () => {
             maybelleneAudio.play();
+            imagineAudio.pause();
+            dancingAudio.pause();
+            nirvanaAudio.pause();
         });
         maybellenePause.addEventListener('click', () => {
             maybelleneAudio.pause();

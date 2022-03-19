@@ -20,24 +20,36 @@
         // Create events when buttons are clicked.
         imaginePlay?.addEventListener('click', () => {
             imagineAudio.play();
+            dancingAudio.pause();
+            nirvanaAudio.pause();
+            maybelleneAudio.pause();
         });
         imaginePause?.addEventListener('click', () => {
             imagineAudio.pause();
         });
         dancingPlay?.addEventListener('click', () => {
             dancingAudio.play();
+            imagineAudio.pause();
+            nirvanaAudio.pause();
+            maybelleneAudio.pause();
         });
         dancingPause?.addEventListener('click', () => {
             dancingAudio.pause();
         });
         nirvanaPlay?.addEventListener('click', () => {
             nirvanaAudio.play();
+            imagineAudio.pause();
+            dancingAudio.pause();
+            maybelleneAudio.pause();
         });
         nirvanaPause.addEventListener('click', () => {
             nirvanaAudio.pause();
         });
         maybellenePlay.addEventListener('click', () => {
             maybelleneAudio.play();
+            imagineAudio.pause();
+            dancingAudio.pause();
+            nirvanaAudio.pause();
         })
         maybellenePause.addEventListener('click', () => {
             maybelleneAudio.pause();
