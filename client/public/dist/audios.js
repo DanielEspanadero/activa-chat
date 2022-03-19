@@ -16,25 +16,25 @@
         const nirvanaAudio = new Audio('../assets/sound/nirvana.mp3');
         const maybelleneAudio = new Audio('../assets/sound/maybellene.mp3');
         // Create events when buttons are clicked.
-        imaginePlay === null || imaginePlay === void 0 ? void 0 : imaginePlay.addEventListener('click', () => {
+        imaginePlay.addEventListener('click', () => {
             imagineAudio.play();
             dancingAudio.pause();
             nirvanaAudio.pause();
             maybelleneAudio.pause();
         });
-        imaginePause === null || imaginePause === void 0 ? void 0 : imaginePause.addEventListener('click', () => {
+        imaginePause.addEventListener('click', () => {
             imagineAudio.pause();
         });
-        dancingPlay === null || dancingPlay === void 0 ? void 0 : dancingPlay.addEventListener('click', () => {
+        dancingPlay.addEventListener('click', () => {
             dancingAudio.play();
             imagineAudio.pause();
             nirvanaAudio.pause();
             maybelleneAudio.pause();
         });
-        dancingPause === null || dancingPause === void 0 ? void 0 : dancingPause.addEventListener('click', () => {
+        dancingPause.addEventListener('click', () => {
             dancingAudio.pause();
         });
-        nirvanaPlay === null || nirvanaPlay === void 0 ? void 0 : nirvanaPlay.addEventListener('click', () => {
+        nirvanaPlay.addEventListener('click', () => {
             nirvanaAudio.play();
             imagineAudio.pause();
             dancingAudio.pause();

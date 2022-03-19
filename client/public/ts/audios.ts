@@ -18,25 +18,25 @@
         const maybelleneAudio: HTMLAudioElement = new Audio('../assets/sound/maybellene.mp3')
 
         // Create events when buttons are clicked.
-        imaginePlay?.addEventListener('click', () => {
+        imaginePlay.addEventListener('click', () => {
             imagineAudio.play();
             dancingAudio.pause();
             nirvanaAudio.pause();
             maybelleneAudio.pause();
         });
-        imaginePause?.addEventListener('click', () => {
+        imaginePause.addEventListener('click', () => {
             imagineAudio.pause();
         });
-        dancingPlay?.addEventListener('click', () => {
+        dancingPlay.addEventListener('click', () => {
             dancingAudio.play();
             imagineAudio.pause();
             nirvanaAudio.pause();
             maybelleneAudio.pause();
         });
-        dancingPause?.addEventListener('click', () => {
+        dancingPause.addEventListener('click', () => {
             dancingAudio.pause();
         });
-        nirvanaPlay?.addEventListener('click', () => {
+        nirvanaPlay.addEventListener('click', () => {
             nirvanaAudio.play();
             imagineAudio.pause();
             dancingAudio.pause();
