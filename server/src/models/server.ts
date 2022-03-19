@@ -5,36 +5,36 @@ import routerLogin from '../routes/login';
 
 class Server {
     private app: Application;
-    private port: any;
-    private path = {
+    private port: string;
+    private apiPaths = {
         login: '/login'
     }
 
     constructor() {
         this.app = express();
-        this.port = process.env.PORT;
+        this.port = process.env.PORT || '5000';
 
         this.middlewares();
         this.routes();
-        this.server();
+        this.listen();
     };
 
-    middlewares(){
+    middlewares() {
         this.app.use(cors({
             credentials: true,
             origin: 'http://localhost:3000'
         }));
     };
 
-    routes(){
-        this.app.use(this.path.login, routerLogin);
+    routes() {
+        this.app.use(this.apiPaths.login, routerLogin);
     };
-    
-    server() {
-        this.app.use(this.port, ()=>{
-            console.log(`Listenner on port ${process.env.PORT}`)
-        })
-    }
+
+    listen() {
+        this.app.listen(this.port, () => {
+            console.log(`Listenner on port ${this.port}`)
+        });
+    };
 };
 
 export default Server;

@@ -8,14 +8,14 @@ const cors_1 = __importDefault(require("cors"));
 const login_1 = __importDefault(require("../routes/login"));
 class Server {
     constructor() {
-        this.path = {
+        this.apiPaths = {
             login: '/login'
         };
         this.app = (0, express_1.default)();
-        this.port = process.env.PORT;
+        this.port = process.env.PORT || '5000';
         this.middlewares();
         this.routes();
-        this.server();
+        this.listen();
     }
     ;
     middlewares() {
@@ -26,14 +26,15 @@ class Server {
     }
     ;
     routes() {
-        this.app.use(this.path.login, login_1.default);
+        this.app.use(this.apiPaths.login, login_1.default);
     }
     ;
-    server() {
-        this.app.use(this.port, () => {
-            console.log(`Listenner on port ${process.env.PORT}`);
+    listen() {
+        this.app.listen(this.port, () => {
+            console.log(`Listenner on port ${this.port}`);
         });
     }
+    ;
 }
 ;
 exports.default = Server;
