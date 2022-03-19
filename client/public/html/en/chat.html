@@ -88,20 +88,18 @@
             </footer>
         </aside>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.0.3/dist/index.min.js"></script>
+    <script>
+        const button = document.querySelector('#emoji-button');
+            const picker = new EmojiButton();
+            button.addEventListener('click', () => {
+                picker.togglePicker(button);
+            });
+            picker.on('emoji', emoji => {
+                document.getElementById('input-chat').value += emoji;
+            });
+    </script>
+
 </body>
-<script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.0.3/dist/index.min.js"></script>
-<script>
-    const button = document.querySelector('#emoji-button');
-
-        const picker = new EmojiButton();
-
-        button.addEventListener('click', () => {
-            picker.togglePicker(button);
-
-        });
-
-        picker.on('emoji', emoji => {
-            document.getElementById('input-chat').value += emoji;
-        });
-</script>
 </html>
