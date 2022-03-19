@@ -3,16 +3,16 @@ import { Schema, model } from 'mongoose';
 const UserSchema: any = new Schema({
     firstName: {
         type: String,
-        required: [true, 'First name is required.']
+        required: [true, 'first name is required.']
     },
     lastName: {
         type: String,
-        required: [true, 'Last name is required.']
+        required: [true, 'last name is required.']
     },
     email: {
         type: String,
         unique: true,
-        required: [true, 'Email is required.']
+        required: [true, 'email is required.']
     },
     avatar: {
         type: String,

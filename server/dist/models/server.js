@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const cors_1 = __importDefault(require("cors"));
 const config_1 = require("../db/config");
 // Routes path
 const login_1 = __importDefault(require("../routes/login"));
@@ -42,10 +41,17 @@ class Server {
     }
     ;
     middlewares() {
-        this.app.use((0, cors_1.default)({
-            credentials: true,
-            origin: 'http://localhost:3000'
-        }));
+        this.app.use((req, res, next) => {
+            res.header('Access-Control-Allow-Origin', '*');
+            res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-COntrol-Allow-Request-Method');
+            res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+            res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+            next();
+        });
+        // this.app.use(cors({
+        //     credentials: true,
+        //     origin: 'http://localhost:3000'
+        // }));
         this.app.use(express_1.default.json());
     }
     ;

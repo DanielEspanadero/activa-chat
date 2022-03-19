@@ -21,9 +21,9 @@ const registerPost = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
     catch (error) {
         throw new Error(error);
-        // res.status(500).json({
-        //     msg: error
-        // });
+        res.status(500).json({
+            msg: error
+        });
     }
     ;
 });

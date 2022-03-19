@@ -10,8 +10,8 @@ export const registerPost = async (req: any, res: any) => {
         res.status(200).json({ user });
     } catch (error: any) {
         throw new Error(error)
-        // res.status(500).json({
-        //     msg: error
-        // });
+        res.status(500).json({
+            msg: error
+        });
     };
 };
