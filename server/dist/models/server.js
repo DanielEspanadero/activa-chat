@@ -13,6 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const http_1 = __importDefault(require("http"));
 const config_1 = require("../db/config");
 // Routes path
 const login_1 = __importDefault(require("../routes/login"));
@@ -28,9 +30,12 @@ class Server {
         };
         this.app = (0, express_1.default)();
         this.port = process.env.PORT || '5000';
+        this.server = http_1.default.createServer(this.app);
+        this.io = require('socket.io')(this.server);
         this.connectDBMongo();
         this.middlewares();
         this.routes();
+        this.sockets();
         this.listen();
     }
     ;
@@ -41,17 +46,10 @@ class Server {
     }
     ;
     middlewares() {
-        this.app.use((req, res, next) => {
-            res.header('Access-Control-Allow-Origin', '*');
-            res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-COntrol-Allow-Request-Method');
-            res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-            res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
-            next();
-        });
-        // this.app.use(cors({
-        //     credentials: true,
-        //     origin: 'http://localhost:3000'
-        // }));
+        this.app.use((0, cors_1.default)({
+            credentials: true,
+            origin: 'http://localhost:3000'
+        }));
         this.app.use(express_1.default.json());
     }
     ;
@@ -61,8 +59,17 @@ class Server {
         this.app.use(this.apiPaths.register, register_1.default);
     }
     ;
+    sockets() {
+        this.io.on("connection", (socket) => {
+            console.log('Cliente conectado', socket.id);
+            socket.on('disconnect', () => {
+                console.log('cliente desconectado', socket.id);
+            });
+        });
+    }
+    ;
     listen() {
-        this.app.listen(this.port, () => {
+        this.server.listen(this.port, () => {
             console.log(`Listenner on port ${this.port}`);
         });
     }

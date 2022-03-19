@@ -1,5 +1,7 @@
 import express, { Application } from 'express';
 import cors from 'cors';
+import http from 'http';
+
 
 import { dbConnectMongo } from '../db/config';
 // Routes path
@@ -10,6 +12,8 @@ import routerRegister from '../routes/register'
 class Server {
     private app: Application;
     private port: string;
+    private server: any;
+    private io: any;
     private apiPaths = {
         login: '/login',
         chat: '/chat',
@@ -20,10 +24,13 @@ class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT || '5000';
+        this.server = http.createServer(this.app);
+        this.io = require('socket.io')(this.server);
 
         this.connectDBMongo();
         this.middlewares();
         this.routes();
+        this.sockets();
         this.listen();
     };
 
@@ -32,18 +39,10 @@ class Server {
     };
 
     middlewares() {
-
-        this.app.use((req, res, next) => {
-            res.header('Access-Control-Allow-Origin', '*');
-            res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-COntrol-Allow-Request-Method');
-            res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-            res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
-            next();
-        }) 
-        // this.app.use(cors({
-        //     credentials: true,
-        //     origin: 'http://localhost:3000'
-        // }));
+        this.app.use(cors({
+            credentials: true,
+            origin: 'http://localhost:3000'
+        }));
         this.app.use(express.json());
     };
 
@@ -53,8 +52,17 @@ class Server {
         this.app.use(this.apiPaths.register, routerRegister);
     };
 
+    sockets() {
+        this.io.on("connection", (socket: any) => {
+            console.log('Cliente conectado', socket.id);
+            socket.on('disconnect', () => {
+                console.log('cliente desconectado', socket.id);
+            });
+        });
+    };
+
     listen() {
-        this.app.listen(this.port, () => {
+        this.server.listen(this.port, () => {
             console.log(`Listenner on port ${this.port}`)
         });
     };

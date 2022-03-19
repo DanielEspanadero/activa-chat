@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activa Chat</title>
     <link rel="icon" href="../../assets/img/activa-ico.ico">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/chat.css">
-    <script src="../../dist/audios.js"></script>
+    <script type="text/javascript" src="../../dist/audios.js"></script>
+    <script type="text/javascript" src="../../dist/socket.client.js"></script>
 </head>
 
 <body>
@@ -47,11 +48,11 @@
             </footer>
         </aside>
         <main id="chat-container">
-
+            
             <header class="headers" id="header-central">
                 <h1>Activa chat</h1>
             </header>
-
+            
             <main id="main-chat" class="scroll">
                 <div class="message">
                     <img class="avatar" src="../../assets/img/man.png" alt="avatar">
@@ -62,7 +63,7 @@
                     </div>
                 </div>
             </main>
-
+            
             <footer id="footer-chat">
                 <button id="emoji-button" class="button"><img src="../../assets/img/cool.png" alt="emojis button"></button>
                 <form>
@@ -81,22 +82,21 @@
                 </form>
             </header>
             <main class="scroll aside-main" id="aside-main-right">
-
+                
             </main>
         </aside>
     </div>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.0.3/dist/index.min.js"></script>
     <script>
         const button = document.querySelector('#emoji-button');
-            const picker = new EmojiButton();
-            button.addEventListener('click', () => {
-                picker.togglePicker(button);
-            });
-            picker.on('emoji', emoji => {
-                document.getElementById('input-chat').value += emoji;
-            });
-    </script>
-
+        const picker = new EmojiButton();
+        button.addEventListener('click', () => {
+            picker.togglePicker(button);
+        });
+        picker.on('emoji', emoji => {
+            document.getElementById('input-chat').value += emoji;
+        });
+        </script>
 </body>
 </html>
