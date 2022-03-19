@@ -1,3 +1,5 @@
+/* General styles of this specific page. */
+
 body {
     position: relative;
     overflow: hidden;
@@ -45,13 +47,22 @@ body {
 }
 
 .headers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     position: fixed;
     background-color: #e2ecf6;
     z-index: 50;
     height: 10vh;
-    width: 100%;
+    width: 20%;
     font-family: 'SecularOne';
     box-shadow: 0px 1px 0px #516188;
+}
+
+/* Through specificity I am replacing the 20% width allocated in the headers class with the 60% allocated in the header-central id. */
+#header-central {
+    width: 60%;
 }
 
 #main-chat {
@@ -80,6 +91,7 @@ body {
     height: 10vh;
     background-color: #e2ecf6;
     border-top: 1px solid #516188;
+    border-right: 1px solid #516188;
 }
 
 #footer-chat>form {
@@ -161,8 +173,16 @@ body {
     background-color: #e2ecf6;
     width: 100%;
     margin-top: 10vh;
-    height: 50vh;
+}
+
+#aside-main-left {
     border-bottom: 1px solid #516188;
+    height: 50vh;
+
+}
+
+#aside-main-right {
+    height: 90vh;
 }
 
 .music-zone {
