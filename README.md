@@ -71,3 +71,15 @@ _Form validations performed both from the client and from the server to check th
 ### Call to the API's created from the backend 📞⚙️
 
 _Through the fetch requests, the calls to the API's created on the server side are made. Keep in mind that for it to work, you must have the two servers activated on a different port each, for example the client on port 3000 and the server on port 8000._
+
+### Songs 🎧
+
+_The initial idea was to be able to upload the songs through a dependency like multer, that they be added to the list and be able to listen to them, delete them... But it was quite complicated for me when validating certain things and since it is not the main objective of the project, I left some songs to be able to implement this function in the future._
+_The audio was made using the native JavaScript Javascript API to work with multimedia files directly from the browser. In this way, we can allow the user to interact with multimedia resources dynamically, and even create a multitude of interesting applications that use both audio and video files._
+_A basic example to play a .mp3 multimedia file from our browser could be the following:_
+```
+const audio = new Audio('../assets/sound/imagine.mp3');
+audio.play();
+```
+_The audio constant contains an instance of the Audio object, to which the path of the .mp3 file that we want to initialize is passed as a parameter. Instead of a path, we can also indicate simply through an .mp3 URL, with which the browser would look for said file in guthub for example and thus we do not load the project so much, in this case I have not done it in the most correct way since there are only 4 test songs._
+_Next, we execute the .play() function of the newly created audio instance._
