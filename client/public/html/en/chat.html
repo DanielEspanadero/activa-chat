@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Activa Chat</title>
     <link rel="icon" href="../../assets/img/activa-ico.ico">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/chat.css">
-    <title>Activa Chat</title>
+    <script src="../../dist/audios.js"></script>
 </head>
 
 <body>
@@ -24,24 +25,24 @@
             </main>
             <footer class="music-zone scroll">
                 <div class="sound">
-                    <button class="play-pause"><img src="../../assets/img/play.png" alt="play"></button>
-                    <button class="play-pause"><img src="../../assets/img/pausa.png" alt="pausa"></button>
-                    <p class="sound-name">Nombre de la canción</p>
+                    <button id="imagine-play" class="play-pause"><img src="../../assets/img/play.png" alt="play"></button>
+                    <button id="imagine-pause" class="play-pause"><img src="../../assets/img/pausa.png" alt="pausa"></button>
+                    <p class="sound-name">John Lennon - Imagine</p>
                 </div>
                 <div class="sound">
-                    <button class="play-pause"><img src="../../assets/img/play.png" alt="play"></button>
-                    <button class="play-pause"><img src="../../assets/img/pausa.png" alt="pausa"></button>
-                    <p class="sound-name">Nombre de la canción</p>
+                    <button id="dancing-play" class="play-pause"><img src="../../assets/img/play.png" alt="play"></button>
+                    <button id="dancing-pause" class="play-pause"><img src="../../assets/img/pausa.png" alt="pausa"></button>
+                    <p class="sound-name">ABBA - Dancing Queen</p>
                 </div>
                 <div class="sound">
-                    <button class="play-pause"><img src="../../assets/img/play.png" alt="play"></button>
-                    <button class="play-pause"><img src="../../assets/img/pausa.png" alt="pausa"></button>
-                    <p class="sound-name">Nombre de la canción</p>
+                    <button id="nirvana-play" class="play-pause"><img src="../../assets/img/play.png" alt="play"></button>
+                    <button id="nirvana-pause" class="play-pause"><img src="../../assets/img/pausa.png" alt="pausa"></button>
+                    <p class="sound-name">Nirvana - Smells Like Teen Spirit</p>
                 </div>
                 <div class="sound">
-                    <button class="play-pause"><img src="../../assets/img/play.png" alt="play"></button>
-                    <button class="play-pause"><img src="../../assets/img/pausa.png" alt="pausa"></button>
-                    <p class="sound-name">Nombre de la canción</p>
+                    <button id="maybellene-play" class="play-pause"><img src="../../assets/img/play.png" alt="play"></button>
+                    <button id="maybellene-pause" class="play-pause"><img src="../../assets/img/pausa.png" alt="pausa"></button>
+                    <p class="sound-name">Chuck Berry - Maybellene</p>
                 </div>
             </footer>
         </aside>
@@ -88,7 +89,6 @@
         </aside>
     </div>
 </body>
-
 <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.0.3/dist/index.min.js"></script>
 <script>
     const button = document.querySelector('#emoji-button');
