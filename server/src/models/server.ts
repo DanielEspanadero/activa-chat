@@ -3,12 +3,16 @@ import cors from 'cors';
 
 import { dbConnectMongo } from '../db/config';
 import routerLogin from '../routes/login';
+import routerChat from '../routes/chat';
 
 class Server {
     private app: Application;
     private port: string;
     private apiPaths = {
-        login: '/login'
+        login: '/login',
+        chat: '/chat',
+        forgotPass: '/forgot-pass',
+        register: '/register'
     }
 
     constructor() {
@@ -34,6 +38,7 @@ class Server {
 
     routes() {
         this.app.use(this.apiPaths.login, routerLogin);
+        this.app.use(this.apiPaths.chat, routerChat);
     };
 
     listen() {

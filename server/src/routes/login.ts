@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { loginGet } from "../controllers/login";
 
-const router = Router();
+const router: any = Router();
 
 router.get('/', loginGet);
 

@@ -16,10 +16,14 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const config_1 = require("../db/config");
 const login_1 = __importDefault(require("../routes/login"));
+const chat_1 = __importDefault(require("../routes/chat"));
 class Server {
     constructor() {
         this.apiPaths = {
-            login: '/login'
+            login: '/login',
+            chat: '/chat',
+            forgotPass: '/forgot-pass',
+            register: '/register'
         };
         this.app = (0, express_1.default)();
         this.port = process.env.PORT || '5000';
@@ -44,6 +48,7 @@ class Server {
     ;
     routes() {
         this.app.use(this.apiPaths.login, login_1.default);
+        this.app.use(this.apiPaths.chat, chat_1.default);
     }
     ;
     listen() {
