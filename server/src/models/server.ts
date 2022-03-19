@@ -2,8 +2,10 @@ import express, { Application } from 'express';
 import cors from 'cors';
 
 import { dbConnectMongo } from '../db/config';
+// Routes path
 import routerLogin from '../routes/login';
 import routerChat from '../routes/chat';
+import routerRegister from '../routes/register'
 
 class Server {
     private app: Application;
@@ -39,6 +41,7 @@ class Server {
     routes() {
         this.app.use(this.apiPaths.login, routerLogin);
         this.app.use(this.apiPaths.chat, routerChat);
+        this.app.use(this.apiPaths.register, routerRegister);
     };
 
     listen() {

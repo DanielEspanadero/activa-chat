@@ -15,8 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const config_1 = require("../db/config");
+// Routes path
 const login_1 = __importDefault(require("../routes/login"));
 const chat_1 = __importDefault(require("../routes/chat"));
+const register_1 = __importDefault(require("../routes/register"));
 class Server {
     constructor() {
         this.apiPaths = {
@@ -49,6 +51,7 @@ class Server {
     routes() {
         this.app.use(this.apiPaths.login, login_1.default);
         this.app.use(this.apiPaths.chat, chat_1.default);
+        this.app.use(this.apiPaths.register, register_1.default);
     }
     ;
     listen() {
