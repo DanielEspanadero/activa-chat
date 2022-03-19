@@ -45,7 +45,7 @@ _Once all the necessary programs and dependencies are installed, simply run the 
 npm start
 ```
 
-## client 📱
+## client 🖥
 
 _The client part is an application made with HTML, CSS and TypeScript. The first page is a login where you only have to enter the user's email and password. It is also possible to log in with the google account which in turn can be used to register (That's why it is omitted in the registration window)._
 
@@ -60,3 +60,14 @@ _We will also have the option to register by entering our name, surname, email a
 
 ![Demo](https://github.com/DanielEspanadero/activa-chat/blob/master/docs/front-03.png)
 
+### Mobile first 📱
+
+_Currently responsive web design is a somewhat outdated practice and search engines like google prioritize Mobile first, do mobile design first and go from less to more in @media queries._
+
+### Form validations 🆗🗂
+
+_Form validations performed both from the client and from the server to check things such as what is entered in an email and that said email is valid or limit the characters that can be written in a given field._
+
+### Call to the API's created from the backend 📞⚙️
+
+_Through the fetch requests, the calls to the API's created on the server side are made. Keep in mind that for it to work, you must have the two servers activated on a different port each, for example the client on port 3000 and the server on port 8000._
