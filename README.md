@@ -45,3 +45,18 @@ _Once all the necessary programs and dependencies are installed, simply run the 
 npm start
 ```
 
+## client 📱
+
+_The client part is an application made with HTML, CSS and TypeScript. The first page is a login where you only have to enter the user's email and password. It is also possible to log in with the google account which in turn can be used to register (That's why it is omitted in the registration window)._
+
+![Demo](https://github.com/DanielEspanadero/activa-chat/blob/master/docs/front-01.png)
+
+_Another option we have is to recover the password through email._
+_The module used to carry out this action is [nodemailer](https://nodemailer.com/about/)._
+
+![Demo](https://github.com/DanielEspanadero/activa-chat/blob/master/docs/front-02.png)
+
+_We will also have the option to register by entering our name, surname, email and password that we want to use._
+
+![Demo](https://github.com/DanielEspanadero/activa-chat/blob/master/docs/front-03.png)
+
