@@ -1,6 +1,7 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 
+import { dbConnectMongo } from '../db/config';
 import routerLogin from '../routes/login';
 
 class Server {
@@ -14,9 +15,14 @@ class Server {
         this.app = express();
         this.port = process.env.PORT || '5000';
 
+        this.connectDBMongo();
         this.middlewares();
         this.routes();
         this.listen();
+    };
+
+    async connectDBMongo(){
+        await dbConnectMongo();
     };
 
     middlewares() {
