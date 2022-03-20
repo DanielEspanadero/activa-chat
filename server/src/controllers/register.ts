@@ -1,11 +1,20 @@
-import { User } from "../models/user";
+import { User } from '../models/user';
+import bcryptjs from 'bcryptjs'
 
 export const registerPost = async (req: any, res: any) => {
     try {
-        const { firstName, lastName, email } = req.body;
+        const { firstName, lastName, email, password } = req.body;
         const date = new Date();
 
-        const user = await new User({ firstName, lastName, email, date });
+        const user = await new User({ firstName, lastName, email, date, password });
+
+        // Verificar si el correo existe
+
+        // Encriptar la contraseña
+        const salt = bcryptjs.genSaltSync(10)
+        // user.password = bcryptjs.hashSync(password, salt)
+
+        // Guardar en DB
         await user.save();
         res.status(200).json({ user });
     } catch (error: any) {

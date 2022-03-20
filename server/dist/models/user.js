@@ -16,6 +16,10 @@ const UserSchema = new mongoose_1.Schema({
         unique: true,
         required: [true, 'email is required.']
     },
+    password: {
+        type: String,
+        required: [true, 'Password is required.']
+    },
     avatar: {
         type: String,
         default: 'https://github.com/DanielEspanadero/activa-chat/blob/master/client/public/assets/img/man.png'
