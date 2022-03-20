@@ -5,7 +5,7 @@ import http from 'http';
 
 import { dbConnectMongo } from '../db/config';
 // Routes path
-import routerLogin from '../routes/login';
+import routerAuth from '../routes/auth';
 import routerChat from '../routes/chat';
 import routerRegister from '../routes/register'
 
@@ -15,10 +15,10 @@ class Server {
     private server: any;
     private io: any;
     private apiPaths = {
-        login: '/login',
-        chat: '/chat',
-        forgotPass: '/forgot-pass',
-        register: '/register'
+        login: '/api/login',
+        chat: '/api/chat',
+        forgotPass: '/api/forgot-pass',
+        register: '/api/register'
     }
 
     constructor() {
@@ -47,7 +47,7 @@ class Server {
     };
 
     routes() {
-        this.app.use(this.apiPaths.login, routerLogin);
+        this.app.use(this.apiPaths.login, routerAuth);
         this.app.use(this.apiPaths.chat, routerChat);
         this.app.use(this.apiPaths.register, routerRegister);
     };

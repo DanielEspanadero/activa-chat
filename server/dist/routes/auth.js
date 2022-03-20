@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const login_1 = require("../controllers/login");
+const auth_1 = require("../controllers/auth");
 const router = (0, express_1.Router)();
-router.get('/', login_1.loginGet);
-router.get('/google', login_1.loginGet);
+router.post('/login', auth_1.login);
+router.get('/google', auth_1.login);
 exports.default = router;
-//# sourceMappingURL=login.js.map
+//# sourceMappingURL=auth.js.map

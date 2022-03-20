@@ -34,7 +34,11 @@
                 <br>
                 <p>----OR----</p>
                 <br>
-                <div id="my-signin2"></div>
+                <div id="g_id_onload" data-client_id="262719378408-8u304bnuretvdp264ipa54rsr5ravht2.apps.googleusercontent.com" data-auto_prompt="false" data-callback="handleCredentialResponse">
+                </div>
+                <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"
+                    data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
+                </div>
                 <br>
                 <a href="/forgot-pass" id="link">Forgot my password</a>
                 <div id="register">
@@ -47,28 +51,17 @@
             <img src="./assets/img/software-1.jpeg" alt="software programmer">
         </div>
     </main>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <script>
+        function handleCredentialResponse(response) {
+
+            // Google token : ID_TOKEN
+            console.log('id_token', response.credential);
+
+        }
+    </script>
 </body>
-
-<script>
-    function onSuccess(googleUser) {
-        console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-    }
-    function onFailure(error) {
-        console.log(error);
-    }
-    function renderButton() {
-        gapi.signin2.render('my-signin2', {
-            'scope': 'profile email',
-            'width': 200,
-            'height': 45,
-            'longtitle': true,
-            'theme': 'dark',
-            'onsuccess': onSuccess,
-            'onfailure': onFailure
-        });
-    }
-</script>
-<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-
 
 </html>
