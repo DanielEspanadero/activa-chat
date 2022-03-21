@@ -3,7 +3,7 @@ import 'dotenv/config';
 
 export const generateAccessToken = (uid = '') => {
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve: any, reject: any) => {
 
         const user = { uid };
 
@@ -12,7 +12,7 @@ export const generateAccessToken = (uid = '') => {
         }, (err, token) => {
             if (err) {
                 console.log(err);
-                reject('No se pudo generar el JWT');
+                reject('Failed to generate JWT');
             } else {
                 resolve(token);
             }

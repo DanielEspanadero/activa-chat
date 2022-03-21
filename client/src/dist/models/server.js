@@ -29,7 +29,13 @@ class Server {
     }
     ;
     middlewares() {
-        this.app.use((0, cors_1.default)());
+        this.app.use((req, res, next) => {
+            res.header('Access-Control-Allow-Origin', '*');
+            res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+            res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+            res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+            next();
+        });
         this.app.use(express_1.default.static(path_1.default.resolve(__dirname, '../../../public')));
         this.app.use((0, cors_1.default)({
             credentials: true,

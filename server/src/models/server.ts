@@ -8,7 +8,7 @@ import { dbConnectMongo } from '../db/config';
 import routerAuth from '../routes/auth';
 import routerChat from '../routes/chat';
 import routerRegister from '../routes/register';
-import router404 from '../routes/register';
+import router404 from '../routes/error-404';
 
 class Server {
     private app: Application;
@@ -36,15 +36,22 @@ class Server {
         this.listen();
     };
 
-    async connectDBMongo(){
+    async connectDBMongo() {
         await dbConnectMongo();
     };
 
     middlewares() {
-        this.app.use(cors({
-            credentials: true,
-            origin: 'http://localhost:3000'
-        }));
+        this.app.use((req, res, next) => {
+            res.header('Access-Control-Allow-Origin', '*');
+            res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+            res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+            res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+            next();
+        });
+        // this.app.use(cors({
+        //     credentials: true,
+        //     origin: 'http://localhost:3000'
+        // }));
         this.app.use(express.json());
     };
 

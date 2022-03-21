@@ -27,12 +27,14 @@ const login = (req, res = express_1.response) => __awaiter(void 0, void 0, void 
                 msg: 'Email / password are not correct. - email'
             });
         }
+        ;
         // Si el usuario está activo
         if (!user.status) {
             return res.status(400).json({
                 msg: 'Email / password are not correct. - status: false'
             });
         }
+        ;
         // Verificar la contraseña
         const validPassword = bcryptjs_1.default.compareSync(password, user.password);
         if (!validPassword) {
@@ -41,6 +43,7 @@ const login = (req, res = express_1.response) => __awaiter(void 0, void 0, void 
                 msg: 'Email / password are not correct. - Password'
             });
         }
+        ;
         // Generar el JWT
         const token = yield (0, generate_jwt_1.generateAccessToken)(user.id);
         res.status(200).json({
@@ -53,6 +56,7 @@ const login = (req, res = express_1.response) => __awaiter(void 0, void 0, void 
             msg: 'Talk to the administrator'
         });
     }
+    ;
 });
 exports.login = login;
 //# sourceMappingURL=auth.js.map
