@@ -1,4 +1,11 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Document } from 'mongoose';
+
+export interface IUser extends Document {
+    email: string;
+    password: string;
+    status: boolean;
+    comparePassword: (password: string) => Promise<Boolean>
+};
 
 const UserSchema: any = new Schema({
     firstName: {
@@ -36,4 +43,4 @@ const UserSchema: any = new Schema({
     }
 );
 
-export const User = model('User', UserSchema)
+export const User = model<IUser>('User', UserSchema);

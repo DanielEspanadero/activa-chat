@@ -2,24 +2,27 @@
 (() => {
     window.addEventListener('load', () => {
         const login = document.querySelector('#login-form-container');
-        const data = new FormData(login);
-        // let firstName: HTMLInputElement = document.querySelector('#first-name')!;
-        // let lastName: HTMLInputElement = document.querySelector('#last-name')!;
-        // let email: HTMLInputElement = document.querySelector('#email')!;
-        // let password: HTMLInputElement = document.querySelector('#password')!;
+        // const data = new FormData(login);
+        let firstName = document.querySelector('#first-name');
+        let lastName = document.querySelector('#last-name');
+        let email = document.querySelector('#email');
+        let password = document.querySelector('#password');
         const URL = 'http://localhost:5000/register';
-        // let nombre = firstName.value
-        // let apellido = lastName.value
-        // let correo = email.value
-        let firstName = 'Hola';
-        let lastName = 'frefe';
-        let email = 'ferfe';
+        let nombre = firstName.value;
+        let apellido = lastName.value;
+        let correo = email.value;
+        let contraseña = password.value;
         login.addEventListener('submit', (ev) => {
             ev.preventDefault();
             fetch(URL, {
                 method: 'POST',
                 headers: { 'Content-type': 'application/json; charset=UTF-8' },
-                body: JSON.stringify(data)
+                body: JSON.stringify({
+                    nombre,
+                    apellido,
+                    correo,
+                    contraseña
+                })
             })
                 .then(resp => resp.json())
                 .then(({ msg, token }) => {
@@ -29,7 +32,7 @@
                 // localStorage.setItem(token);
             })
                 .then(data => {
-                console.log(data);
+                console.log(nombre, apellido);
             })
                 .catch(err => {
                 console.log(err);

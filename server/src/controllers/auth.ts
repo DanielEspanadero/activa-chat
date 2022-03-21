@@ -16,13 +16,20 @@ export const login = async (req: any, res = response) => {
         }
 
         // Si el usuario está activo
-        // if(!user.status){
-        //     res.status(400).json({
-        //         msg: 'Email / password are not correct. - status: false'
-        //     })
-        // }
+        if (!user.status) {
+            return res.status(400).json({
+                msg: 'Email / password are not correct. - status: false'
+            })
+        }
         // Verificar la contraseña
-        const validatePassword = bcryptjs.compareSync(password, user.password);
+        const validPassword = bcryptjs.compareSync(password, user.password);
+
+        if (!validPassword) {
+            return res.status(400).json({
+                msg: 'Email / password are not correct. - Password'
+            })
+        }
+
         // Generar el JWT
 
 

@@ -20,13 +20,15 @@ const config_1 = require("../db/config");
 const auth_1 = __importDefault(require("../routes/auth"));
 const chat_1 = __importDefault(require("../routes/chat"));
 const register_1 = __importDefault(require("../routes/register"));
+const register_2 = __importDefault(require("../routes/register"));
 class Server {
     constructor() {
         this.apiPaths = {
-            login: '/api/login',
-            chat: '/api/chat',
-            forgotPass: '/api/forgot-pass',
-            register: '/api/register'
+            login: '/login',
+            chat: '/chat',
+            forgotPass: '/forgot-pass',
+            register: '/register',
+            error404: '*'
         };
         this.app = (0, express_1.default)();
         this.port = process.env.PORT || '5000';
@@ -57,6 +59,7 @@ class Server {
         this.app.use(this.apiPaths.login, auth_1.default);
         this.app.use(this.apiPaths.chat, chat_1.default);
         this.app.use(this.apiPaths.register, register_1.default);
+        this.app.use(this.apiPaths.error404, register_2.default);
     }
     ;
     sockets() {

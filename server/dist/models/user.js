@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const mongoose_1 = require("mongoose");
+;
 const UserSchema = new mongoose_1.Schema({
     firstName: {
         type: String,
@@ -23,6 +24,10 @@ const UserSchema = new mongoose_1.Schema({
     avatar: {
         type: String,
         default: 'https://github.com/DanielEspanadero/activa-chat/blob/master/client/public/assets/img/man.png'
+    },
+    status: {
+        type: Boolean,
+        default: true
     },
     date: {
         type: Date,

@@ -31,6 +31,10 @@ class Server {
     middlewares() {
         this.app.use((0, cors_1.default)());
         this.app.use(express_1.default.static(path_1.default.resolve(__dirname, '../../../public')));
+        this.app.use((0, cors_1.default)({
+            credentials: true,
+            origin: 'http://localhost:5000',
+        }));
     }
     routes() {
         this.app.use(this.path.login, login_1.default);

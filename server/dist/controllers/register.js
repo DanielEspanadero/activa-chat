@@ -21,6 +21,12 @@ const registerPost = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         const date = new Date();
         const user = yield new user_1.User({ firstName, lastName, email, date, password });
         // Verificar si el correo existe
+        const existEmail = yield user_1.User.findOne({ email });
+        if (existEmail) {
+            return res.status(400).json({
+                msg: 'That email is already registered.'
+            });
+        }
         // Encriptar la contraseña
         const salt = bcryptjs_1.default.genSaltSync(10);
         // user.password = bcryptjs.hashSync(password, salt)

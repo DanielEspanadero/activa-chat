@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const auth_1 = require("../controllers/auth");
+const error_404_1 = require("../controllers/error-404");
 const router = (0, express_1.Router)();
-router.post('/', auth_1.login);
-router.get('/google', auth_1.login);
+router.get('/', error_404_1.error404Post);
 exports.default = router;
-//# sourceMappingURL=auth.js.map
+//# sourceMappingURL=error-404.js.map
