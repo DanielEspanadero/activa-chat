@@ -22,6 +22,10 @@ const UserSchema: any = new Schema({
         type: String,
         default: 'https://github.com/DanielEspanadero/activa-chat/blob/master/client/public/assets/img/man.png'
     },
+    status: {
+        type: Boolean,
+        default: true
+    },
     date: {
         type: Date,
         required: true

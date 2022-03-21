@@ -5,7 +5,7 @@ import { login } from "../controllers/auth";
 
 const router: any = Router();
 
-router.post('/login', login);
+router.post('/', login);
 
 router.get('/google', login);
 

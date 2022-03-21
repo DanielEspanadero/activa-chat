@@ -9,6 +9,12 @@ export const registerPost = async (req: any, res: any) => {
         const user = await new User({ firstName, lastName, email, date, password });
 
         // Verificar si el correo existe
+        const existEmail = await User.findOne({ email });
+        if (existEmail) {
+            return res.status(400).json({
+                msg: 'That email is already registered.'
+            })
+        }
 
         // Encriptar la contraseña
         const salt = bcryptjs.genSaltSync(10)
