@@ -31,7 +31,7 @@ class Server {
             error404: '*'
         };
         this.app = (0, express_1.default)();
-        this.port = process.env.PORT || '5000';
+        this.port = process.env.PORT;
         this.server = http_1.default.createServer(this.app);
         this.io = require('socket.io')(this.server);
         this.connectDBMongo();

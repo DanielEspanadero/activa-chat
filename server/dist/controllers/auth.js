@@ -16,6 +16,7 @@ exports.login = void 0;
 const express_1 = require("express");
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const user_1 = require("../models/user");
+const generate_jwt_1 = require("../helpers/generate-jwt");
 const login = (req, res = express_1.response) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
     try {
@@ -36,12 +37,15 @@ const login = (req, res = express_1.response) => __awaiter(void 0, void 0, void 
         const validPassword = bcryptjs_1.default.compareSync(password, user.password);
         if (!validPassword) {
             return res.status(400).json({
+                validPassword,
                 msg: 'Email / password are not correct. - Password'
             });
         }
         // Generar el JWT
+        const token = yield (0, generate_jwt_1.generateAccessToken)(user.id);
         res.status(200).json({
-            msg: 'Login ok'
+            user,
+            token
         });
     }
     catch (error) {

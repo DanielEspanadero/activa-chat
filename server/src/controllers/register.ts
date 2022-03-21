@@ -18,7 +18,7 @@ export const registerPost = async (req: any, res: any) => {
 
         // Encriptar la contraseña
         const salt = bcryptjs.genSaltSync(10)
-        // user.password = bcryptjs.hashSync(password, salt)
+        user.password = bcryptjs.hashSync(password, salt)
 
         // Guardar en DB
         await user.save();

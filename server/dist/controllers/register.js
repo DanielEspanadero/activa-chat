@@ -29,7 +29,7 @@ const registerPost = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         }
         // Encriptar la contraseña
         const salt = bcryptjs_1.default.genSaltSync(10);
-        // user.password = bcryptjs.hashSync(password, salt)
+        user.password = bcryptjs_1.default.hashSync(password, salt);
         // Guardar en DB
         yield user.save();
         res.status(200).json({ user });

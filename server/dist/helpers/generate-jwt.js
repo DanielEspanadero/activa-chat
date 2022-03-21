@@ -6,8 +6,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateAccessToken = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 require("dotenv/config");
-const generateAccessToken = (user) => {
-    return jsonwebtoken_1.default.sign(user, process.env.SECRETPRIVATEKEY, { expiresIn: '4h' });
+const generateAccessToken = (uid = '') => {
+    return new Promise((resolve, reject) => {
+        const user = { uid };
+        jsonwebtoken_1.default.sign(user, process.env.SECRETPRIVATEKEY, {
+            expiresIn: '4h'
+        }, (err, token) => {
+            if (err) {
+                console.log(err);
+                reject('No se pudo generar el JWT');
+            }
+            else {
+                resolve(token);
+            }
+        });
+    });
 };
 exports.generateAccessToken = generateAccessToken;
 //# sourceMappingURL=generate-jwt.js.map
