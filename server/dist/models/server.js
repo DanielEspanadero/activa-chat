@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const http_1 = __importDefault(require("http"));
 const config_1 = require("../db/config");
 // Routes path
@@ -20,10 +21,11 @@ const auth_1 = __importDefault(require("../routes/auth"));
 const chat_1 = __importDefault(require("../routes/chat"));
 const register_1 = __importDefault(require("../routes/register"));
 const error_404_1 = __importDefault(require("../routes/error-404"));
+const controller_1 = require("../sockets/controller");
 class Server {
     constructor() {
         this.apiPaths = {
-            login: '/login',
+            login: '/auth',
             chat: '/chat',
             forgotPass: '/forgot-pass',
             register: '/register',
@@ -47,18 +49,29 @@ class Server {
     }
     ;
     middlewares() {
-        this.app.use((req, res, next) => {
-            res.header('Access-Control-Allow-Origin', '*');
-            res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
-            res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-            res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
-            next();
+        return __awaiter(this, void 0, void 0, function* () {
+            // this.app.use((req, res, next) => {
+            //     res.header('Access-Control-Allow-Origin', '*');
+            //     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+            //     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+            //     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+            //     next();
+            // });
+            yield this.app.use((0, cors_1.default)({
+                allowedHeaders: [
+                    'Origin',
+                    'X-Requested-With',
+                    'Content-Type',
+                    'Accept',
+                    'X-Access-Token',
+                ],
+                credentials: true,
+                methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+                origin: '*',
+                preflightContinue: false,
+            }));
+            this.app.use(express_1.default.json());
         });
-        // this.app.use(cors({
-        //     credentials: true,
-        //     origin: 'http://localhost:3000'
-        // }));
-        this.app.use(express_1.default.json());
     }
     ;
     routes() {
@@ -69,12 +82,7 @@ class Server {
     }
     ;
     sockets() {
-        this.io.on("connection", (socket) => {
-            console.log('Cliente conectado', socket.id);
-            socket.on('disconnect', () => {
-                console.log('cliente desconectado', socket.id);
-            });
-        });
+        this.io.on("connection", controller_1.socketController);
     }
     ;
     listen() {

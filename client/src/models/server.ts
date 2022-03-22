@@ -38,11 +38,11 @@ class Server {
             next();
         });
         this.app.use(express.static(path.resolve(__dirname, '../../../public')));
-        this.app.use(cors({
-            credentials: true,
-            origin: 'http://localhost:5000',
-
-        }));
+        // this.app.use(cors({
+        //     credentials: true,
+        //     origin: 'http://localhost:5000',
+        //     optionsSuccessStatus: 200
+        // }));
     }
 
     routes() {

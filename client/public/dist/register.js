@@ -3,26 +3,25 @@
     window.addEventListener('load', () => {
         const login = document.querySelector('#login-form-container');
         // const data = new FormData(login);
-        let firstName = document.querySelector('#first-name');
-        let lastName = document.querySelector('#last-name');
-        let email = document.querySelector('#email');
-        let password = document.querySelector('#password');
+        // let firstName: HTMLInputElement = document.querySelector('#first-name')!;
+        // let lastName: HTMLInputElement = document.querySelector('#last-name')!;
+        // let email: HTMLInputElement = document.querySelector('#email')!;
+        // let password: HTMLInputElement = document.querySelector('#password')!;
         const URL = 'http://localhost:5000/register';
-        let nombre = firstName.value;
-        let apellido = lastName.value;
-        let correo = email.value;
-        let contraseña = password.value;
+        // let nombre = firstName.value
+        // let apellido = lastName.value
+        // let correo = email.value
+        // let contraseña = password.value
         login.addEventListener('submit', (ev) => {
             ev.preventDefault();
+            const formData = {};
+            for (let el of login.elements) {
+                if (el.name.length > 0)
+                    formData[el.name] = el.value;
+            }
             fetch(URL, {
                 method: 'POST',
-                headers: { 'Content-type': 'application/json; charset=UTF-8' },
-                body: JSON.stringify({
-                    nombre,
-                    apellido,
-                    correo,
-                    contraseña
-                })
+                body: JSON.stringify(formData)
             })
                 .then(resp => resp.json())
                 .then(({ msg, token }) => {
@@ -30,11 +29,12 @@
                     return console.error(msg);
                 }
                 // localStorage.setItem(token);
+                // window.location.href = '/chat';
             })
-                .then(data => {
-                console.log(nombre, apellido);
+                .then((data) => {
+                console.log(data);
             })
-                .catch(err => {
+                .catch((err) => {
                 console.log(err);
             });
         });

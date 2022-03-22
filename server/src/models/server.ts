@@ -4,11 +4,14 @@ import http from 'http';
 
 
 import { dbConnectMongo } from '../db/config';
+
 // Routes path
 import routerAuth from '../routes/auth';
 import routerChat from '../routes/chat';
 import routerRegister from '../routes/register';
 import router404 from '../routes/error-404';
+
+import { socketController } from '../sockets/controller';
 
 class Server {
     private app: Application;
@@ -16,7 +19,7 @@ class Server {
     private server: any;
     private io: any;
     private apiPaths = {
-        login: '/login',
+        login: '/auth',
         chat: '/chat',
         forgotPass: '/forgot-pass',
         register: '/register',
@@ -40,18 +43,27 @@ class Server {
         await dbConnectMongo();
     };
 
-    middlewares() {
-        this.app.use((req, res, next) => {
-            res.header('Access-Control-Allow-Origin', '*');
-            res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
-            res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-            res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
-            next();
-        });
-        // this.app.use(cors({
-        //     credentials: true,
-        //     origin: 'http://localhost:3000'
-        // }));
+    async middlewares() {
+        // this.app.use((req, res, next) => {
+        //     res.header('Access-Control-Allow-Origin', '*');
+        //     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+        //     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+        //     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+        //     next();
+        // });
+        await this.app.use(cors({
+            allowedHeaders: [
+                'Origin',
+                'X-Requested-With',
+                'Content-Type',
+                'Accept',
+                'X-Access-Token',
+            ],
+            credentials: true,
+            methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+            origin: '*',
+            preflightContinue: false,
+        }));
         this.app.use(express.json());
     };
 
@@ -63,12 +75,7 @@ class Server {
     };
 
     sockets() {
-        this.io.on("connection", (socket: any) => {
-            console.log('Cliente conectado', socket.id);
-            socket.on('disconnect', () => {
-                console.log('cliente desconectado', socket.id);
-            });
-        });
+        this.io.on("connection", socketController);
     };
 
     listen() {
