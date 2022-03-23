@@ -10,7 +10,7 @@
 
         const URL: string = 'http://localhost:5000/register';
 
-        // let nombre = firstName.value
+        // let nombre = firstName?.current?.value
         // let apellido = lastName.value
         // let correo = email.value
         // let contraseña = password.value
@@ -23,22 +23,22 @@
                 if (el.name.length > 0)
                     formData[el.name] = el.value
             }
-
+            console.log(formData);
             fetch(URL, {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 method: 'POST',
                 body: JSON.stringify(formData)
             })
                 .then(resp => resp.json())
-                .then(({ msg, token }) => {
-                    if (msg) {
-                        return console.error(msg);
-                    }
-                    // localStorage.setItem(token);
-                    // window.location.href = '/chat';
-                })
-                .then((data: any) => {
-                    console.log(data);
-                })
+                // .then(({ msg, token }) => {
+                //     if (msg) {
+                //         return console.error(msg);
+                //     }
+                //     // localStorage.setItem(token);
+                //     // window.location.href = '/chat';
+                // })
                 .catch((err: any) => {
                     console.log(err);
                 });

@@ -43,7 +43,7 @@ class Server {
         await dbConnectMongo();
     };
 
-    async middlewares() {
+    middlewares() {
         // this.app.use((req, res, next) => {
         //     res.header('Access-Control-Allow-Origin', '*');
         //     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
@@ -51,7 +51,7 @@ class Server {
         //     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
         //     next();
         // });
-        await this.app.use(cors({
+        this.app.use(cors({
             allowedHeaders: [
                 'Origin',
                 'X-Requested-With',

@@ -49,29 +49,27 @@ class Server {
     }
     ;
     middlewares() {
-        return __awaiter(this, void 0, void 0, function* () {
-            // this.app.use((req, res, next) => {
-            //     res.header('Access-Control-Allow-Origin', '*');
-            //     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
-            //     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-            //     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
-            //     next();
-            // });
-            yield this.app.use((0, cors_1.default)({
-                allowedHeaders: [
-                    'Origin',
-                    'X-Requested-With',
-                    'Content-Type',
-                    'Accept',
-                    'X-Access-Token',
-                ],
-                credentials: true,
-                methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-                origin: '*',
-                preflightContinue: false,
-            }));
-            this.app.use(express_1.default.json());
-        });
+        // this.app.use((req, res, next) => {
+        //     res.header('Access-Control-Allow-Origin', '*');
+        //     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+        //     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+        //     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+        //     next();
+        // });
+        this.app.use((0, cors_1.default)({
+            allowedHeaders: [
+                'Origin',
+                'X-Requested-With',
+                'Content-Type',
+                'Accept',
+                'X-Access-Token',
+            ],
+            credentials: true,
+            methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+            origin: '*',
+            preflightContinue: false,
+        }));
+        this.app.use(express_1.default.json());
     }
     ;
     routes() {
