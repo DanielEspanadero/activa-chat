@@ -13,7 +13,7 @@ interface ClientToServerEvents {
     hello: () => void;
 }
 
-const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io();
+const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io('http://localhost:5000');
 
 socket.emit("hello");
 

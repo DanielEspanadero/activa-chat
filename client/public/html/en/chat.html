@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/chat.css">
     <script type="text/javascript" src="../../dist/audios.js"></script>
-    <script type="text/javascript" src="../../dist/socket.client.js"></script>
 </head>
 
 <body>
@@ -26,33 +25,41 @@
             </main>
             <footer class="music-zone scroll">
                 <div class="sound">
-                    <button id="imagine-play" class="play-pause"><img src="../../assets/img/play.png" alt="play"></button>
-                    <button id="imagine-pause" class="play-pause"><img src="../../assets/img/pausa.png" alt="pausa"></button>
+                    <button id="imagine-play" class="play-pause"><img src="../../assets/img/play.png"
+                            alt="play"></button>
+                    <button id="imagine-pause" class="play-pause"><img src="../../assets/img/pausa.png"
+                            alt="pausa"></button>
                     <p class="sound-name">John Lennon - Imagine</p>
                 </div>
                 <div class="sound">
-                    <button id="dancing-play" class="play-pause"><img src="../../assets/img/play.png" alt="play"></button>
-                    <button id="dancing-pause" class="play-pause"><img src="../../assets/img/pausa.png" alt="pausa"></button>
+                    <button id="dancing-play" class="play-pause"><img src="../../assets/img/play.png"
+                            alt="play"></button>
+                    <button id="dancing-pause" class="play-pause"><img src="../../assets/img/pausa.png"
+                            alt="pausa"></button>
                     <p class="sound-name">ABBA - Dancing Queen</p>
                 </div>
                 <div class="sound">
-                    <button id="nirvana-play" class="play-pause"><img src="../../assets/img/play.png" alt="play"></button>
-                    <button id="nirvana-pause" class="play-pause"><img src="../../assets/img/pausa.png" alt="pausa"></button>
+                    <button id="nirvana-play" class="play-pause"><img src="../../assets/img/play.png"
+                            alt="play"></button>
+                    <button id="nirvana-pause" class="play-pause"><img src="../../assets/img/pausa.png"
+                            alt="pausa"></button>
                     <p class="sound-name">Nirvana - Smells Like Teen Spirit</p>
                 </div>
                 <div class="sound">
-                    <button id="maybellene-play" class="play-pause"><img src="../../assets/img/play.png" alt="play"></button>
-                    <button id="maybellene-pause" class="play-pause"><img src="../../assets/img/pausa.png" alt="pausa"></button>
+                    <button id="maybellene-play" class="play-pause"><img src="../../assets/img/play.png"
+                            alt="play"></button>
+                    <button id="maybellene-pause" class="play-pause"><img src="../../assets/img/pausa.png"
+                            alt="pausa"></button>
                     <p class="sound-name">Chuck Berry - Maybellene</p>
                 </div>
             </footer>
         </aside>
         <main id="chat-container">
-            
+
             <header class="headers" id="header-central">
                 <h1>Activa chat</h1>
             </header>
-            
+
             <main id="main-chat" class="scroll">
                 <div class="message">
                     <img class="avatar" src="../../assets/img/man.png" alt="avatar">
@@ -63,11 +70,13 @@
                     </div>
                 </div>
             </main>
-            
+
             <footer id="footer-chat">
-                <button id="emoji-button" class="button"><img src="../../assets/img/cool.png" alt="emojis button"></button>
+                <button id="emoji-button" class="button"><img src="../../assets/img/cool.png"
+                        alt="emojis button"></button>
                 <form>
-                    <input id="input-chat" type="text" placeholder="Write a message..." class="input measures-input-chat">
+                    <input id="input-chat" type="text" placeholder="Write a message..."
+                        class="input measures-input-chat">
                     <button type="submit" class="button">
                         <img src="../../assets/img/send-button.png" alt="send button">
                     </button>
@@ -82,15 +91,12 @@
                 </form>
             </header>
             <main class="scroll aside-main" id="aside-main-right">
-                
+
             </main>
         </aside>
     </div>
-    
-    <script src="./socket.io/socket.io.js"></script>
-    <script src="../../dist/socket.client.js"></script>
 
-    
+
     <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.0.3/dist/index.min.js"></script>
     <script>
         const button = document.querySelector('#emoji-button');
@@ -101,6 +107,11 @@
         picker.on('emoji', emoji => {
             document.getElementById('input-chat').value += emoji;
         });
-        </script>
+    </script>
+
+    <script type="text/javascript" src="./socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="../../dist/socket.client.js"></script>
+
 </body>
+
 </html>
