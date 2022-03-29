@@ -145,6 +145,10 @@
 
 @media screen and (min-width:768px) {
 
+    #img-container {
+        display: flex;
+    }
+
     #login-container {
         width: 50%;
         float: left;
@@ -164,7 +168,16 @@
     }
 
     #login-cont-inside>h1 {
-        font-size: 3em;
+        font-size: 2em;
+    }
+
+    .button {
+        background-color: #516188;
+        width: 5em;
+        margin-top: .5em;
+        color: #fff;
+        border-radius: 1em;
+        font-size: 1.1em;
     }
 
     #img-container>img {

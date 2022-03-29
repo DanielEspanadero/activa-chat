@@ -1,6 +1,4 @@
-
-import { io, Socket } from "socket.io-client";
-
+import { io, Socket } from 'socket.io-client';
 
 alert('hola')
 
@@ -15,17 +13,17 @@ interface ClientToServerEvents {
 
 const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io('http://localhost:5000');
 
-socket.emit("hello");
+socket.emit('hello');
 
-socket.on("noArg", () => {
+socket.on('noArg', () => {
     console.log('errrr')
     // ...
 });
 
-socket.on("basicEmit", (a, b, c) => {
+socket.on('basicEmit', (a, b, c) => {
     // a is inferred as number, b as string and c as buffer
 });
 
-socket.on("withAck", (d, callback) => {
+socket.on('withAck', (d, callback) => {
     // d is inferred as string and callback as a function that takes a number as argument
 });
