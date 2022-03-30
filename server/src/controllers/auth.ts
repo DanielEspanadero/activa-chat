@@ -1,10 +1,10 @@
-import { response } from "express";
+import { Request, Response, response } from "express";
 import bcryptjs from 'bcryptjs';
 
 import { User } from "../models/user";
 import { generateAccessToken } from "../helpers/generate-jwt";
 
-export const login = async (req: any, res = response) => {
+export const login = async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
     try {
@@ -15,7 +15,6 @@ export const login = async (req: any, res = response) => {
                 msg: 'Email / password are not correct. - email'
             });
         };
-
         // Si el usuario está activo
         if (!user.status) {
             return res.status(400).json({
@@ -33,9 +32,7 @@ export const login = async (req: any, res = response) => {
         };
 
         // Generar el JWT
-
         const token = await generateAccessToken(user.id);
-
 
         res.status(200).json({
             user,
@@ -47,3 +44,15 @@ export const login = async (req: any, res = response) => {
         });
     };
 };
+
+export const refreshJWT = async (req: any, res: Response) => {
+    const user = req;
+
+    // Generate JWT
+    const token = await generateAccessToken(user.id);
+
+    res.status(200).json({
+        user,
+        token
+    })
+}

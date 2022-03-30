@@ -109,11 +109,12 @@
         });
     </script>
 
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
-    <script>
-        
-        const socket = io("http://localhost:5000");
-    </script>
+    <script src="./socket.io/socket.io.js"></script>
+<script type="module">
+    const { io } = require("socket.io-client");
+
+    const socket = io('http://localhost:5000');
+</script>
 
 </body>
 
