@@ -1,5 +1,5 @@
 export const socketController = (socket: any) => {
 
-    console.log('Cliente conectado', socket.id)
+    console.log(socket.handshake.headers['x-token']);
 
 }

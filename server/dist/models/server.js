@@ -21,7 +21,6 @@ const auth_1 = __importDefault(require("../routes/auth"));
 const chat_1 = __importDefault(require("../routes/chat"));
 const register_1 = __importDefault(require("../routes/register"));
 const error_404_1 = __importDefault(require("../routes/error-404"));
-const controller_1 = require("../sockets/controller");
 class Server {
     constructor() {
         this.apiPaths = {
@@ -34,7 +33,12 @@ class Server {
         this.app = (0, express_1.default)();
         this.port = process.env.PORT;
         this.server = http_1.default.createServer(this.app);
-        this.io = require('socket.io')(this.server);
+        this.io = require('socket.io')(this.server, {
+            cors: {
+                origin: "*",
+                methods: ["GET", "POST"]
+            }
+        });
         this.connectDBMongo();
         this.middlewares();
         this.routes();
@@ -73,7 +77,12 @@ class Server {
     }
     ;
     sockets() {
-        this.io.on("connection", controller_1.socketController);
+        this.io.on("connection", (socket) => {
+            setInterval(() => socket.emit("hello", "server li diu hello al client"), 5000);
+            socket.on("howareyou", (arg) => {
+                console.log(arg);
+            });
+        });
     }
     ;
     listen() {

@@ -1,4 +1,4 @@
-## 💬 ACTIVA CHAT 💬
+# 💬 ACTIVA CHAT 💬
 
 _Chat made as final project of the Node.js course by [Daniel Españadero](https://github.com/DanielEspanadero) at IT Academy in Barcelona._
 

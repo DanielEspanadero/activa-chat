@@ -30,7 +30,12 @@ class Server {
         this.app = express();
         this.port = process.env.PORT as string;
         this.server = http.createServer(this.app);
-        this.io = require('socket.io')(this.server);
+        this.io = require('socket.io')(this.server, {
+            cors: {
+                origin: "*",
+                methods: ["GET", "POST"]
+            }
+        });
 
         this.connectDBMongo();
         this.middlewares();
@@ -68,7 +73,15 @@ class Server {
     };
 
     sockets() {
-        this.io.on("connection", socketController);
+        this.io.on("connection", (socket: any) => {
+
+
+            setInterval(() => socket.emit("hello", "server li diu hello al client"), 5000);
+
+            socket.on("howareyou", (arg: any) => {
+                console.log(arg);
+            });
+        });
     };
 
     listen() {

@@ -109,11 +109,20 @@
         });
     </script>
 
-    <script src="./socket.io/socket.io.js"></script>
-<script type="module">
-    const { io } = require("socket.io-client");
 
-    const socket = io('http://localhost:5000');
+    <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+    <script src="../../dist/chat.js"></script>
+<script type="module">
+        const socket = io("http://localhost:5000");
+
+        socket.on("hello", (arg) => {
+            console.log(arg);
+        });
+
+        setInterval(() => {
+            socket.emit("howareyou", "client li diu how are you al server");
+        }, 5000);
+    
 </script>
 
 </body>
