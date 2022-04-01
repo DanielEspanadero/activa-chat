@@ -21,6 +21,7 @@ const auth_1 = __importDefault(require("../routes/auth"));
 const chat_1 = __importDefault(require("../routes/chat"));
 const register_1 = __importDefault(require("../routes/register"));
 const error_404_1 = __importDefault(require("../routes/error-404"));
+const controller_1 = require("../sockets/controller");
 class Server {
     constructor() {
         this.apiPaths = {
@@ -77,14 +78,8 @@ class Server {
     }
     ;
     sockets() {
-        this.io.on("connection", (socket) => {
-            setInterval(() => socket.emit("hello", "server li diu hello al client"), 5000);
-            socket.on("howareyou", (arg) => {
-                console.log(arg);
-            });
-        });
+        this.io.on("connection", controller_1.socketController);
     }
-    ;
     listen() {
         this.server.listen(this.port, () => {
             console.log(`Listenner on port ${this.port}`);

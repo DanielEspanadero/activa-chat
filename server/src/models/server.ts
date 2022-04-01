@@ -73,16 +73,8 @@ class Server {
     };
 
     sockets() {
-        this.io.on("connection", (socket: any) => {
-
-
-            setInterval(() => socket.emit("hello", "server li diu hello al client"), 5000);
-
-            socket.on("howareyou", (arg: any) => {
-                console.log(arg);
-            });
-        });
-    };
+        this.io.on("connection", socketController);
+    }
 
     listen() {
         this.server.listen(this.port, () => {
