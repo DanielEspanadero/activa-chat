@@ -86,3 +86,32 @@ audio.play();
 ```
 _The audio constant contains an instance of the Audio object, to which the path of the .mp3 file that we want to initialize is passed as a parameter. Instead of a path, we can also indicate simply through an .mp3 URL, with which the browser would look for said file in guthub for example and thus we do not load the project so much, in this case I have not done it in the most correct way since there are only 4 test songs._
 _Next, we execute the .play() function of the newly created audio instance._
+
+### Emojis 🙂❤️
+
+_The emojis that I have used are from an existing library, to be able to introduce them in your project you have to copy this in your HTML:_
+
+```
+<script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.0.3/dist/index.min.js"></script>
+
+<button id="emoji-button">Click Me</button>
+
+<input type="text">
+```
+
+_Once the HTML is pasted, we link a JavaScript file to the HTML and enter the following code:_
+
+```
+const button = document.querySelector('#emoji-button');
+
+const picker = new EmojiButton();
+
+button.addEventListener('click', () => {
+  picker.togglePicker(button);
+  
+});
+
+  picker.on('emoji', emoji => {
+    document.querySelector('input').value += emoji;
+  });
+```
