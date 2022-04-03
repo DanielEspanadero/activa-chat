@@ -17,9 +17,6 @@
         <aside id="rooms-container">
             <header class="headers">
                 <h1>Rooms</h1>
-                <form>
-                    <input class="input" type="text" name="search" placeholder="Search">
-                </form>
             </header>
             <main class="scroll aside-main" id="aside-main-left">
             </main>
@@ -57,7 +54,13 @@
         <main id="chat-container">
 
             <header class="headers" id="header-central">
+                <div id="button-rooms" class="button">
+                    <img class="users-room-button" src="../../assets/img/menu.png" alt="rooms menu">
+                </div>
                 <h1>Activa chat</h1>
+                <div id="button-users" class="button">
+                    <img class="users-room-button" src="../../assets/img/users.png" alt="users buttom">
+                </div>
             </header>
 
             <main id="main-chat" class="scroll">
@@ -74,10 +77,10 @@
             <footer id="footer-chat">
                 <button id="emoji-button" class="button"><img src="../../assets/img/cool.png"
                         alt="emojis button"></button>
-                <form>
+                <form id="messages-container">
                     <input id="input-chat" type="text" placeholder="Write a message..."
                         class="input measures-input-chat">
-                    <button type="submit" class="button">
+                    <button type="submit" id="send-message" class="button">
                         <img src="../../assets/img/send-button.png" alt="send button">
                     </button>
                 </form>
@@ -86,9 +89,6 @@
         <aside id="users-container">
             <header class="headers">
                 <h1>Users</h1>
-                <form>
-                    <input class="input" type="text" name="search" placeholder="Search">
-                </form>
             </header>
             <main class="scroll aside-main" id="aside-main-right">
 
@@ -112,38 +112,7 @@
 
     <script src="http://localhost:5000/socket.io/socket.io.js"></script>
     <script src="../../dist/chat.js"></script>
-    <script type="module">
-        const socket = io("http://localhost:5000");
-
-        socket.on("hello", (arg) => {
-            console.log(arg);
-        });
-
-        socket.on("connect", () => {
-            console.log('Socket online');
-        });
-
-        socket.on("disconnect", () => {
-            console.log('socket offline');
-        });
-
-        socket.on('recibir-mensajes', () => {
-            // TODO 
-        });
-
-        socket.on('usuarios-activos', () => {
-            // TODO 
-        });
-
-        socket.on('mensaje-privado', () => {
-            // TODO 
-        });
-
-        // setInterval(() => {
-        //     socket.emit("howareyou", "client li diu how are you al server");
-        // }, 5000);
-
-    </script>
+    <script type="module" src="../../index.js"></script>
 
 </body>
 

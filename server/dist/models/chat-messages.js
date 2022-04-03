@@ -25,7 +25,7 @@ class ChatMessages {
         );
     }
     connectUser(user) {
-        this.users[user.id] = user;
+        // this.users[user.id] = user
     }
     disconnectUser(id) {
         delete this.users[id];

@@ -36,7 +36,7 @@ class ChatMessages {
     }
 
     connectUser(user: any) {
-        this.users[user.id] = user
+        // this.users[user.id] = user
     }
 
     disconnectUser(id: any) {

@@ -78,7 +78,7 @@ class Server {
     }
     ;
     sockets() {
-        this.io.on("connection", controller_1.socketController);
+        this.io.on("connection", (socket) => (0, controller_1.socketController)(socket, this.io));
     }
     listen() {
         this.server.listen(this.port, () => {

@@ -1,9 +1,33 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.socketController = void 0;
-const socketController = (socket) => {
+const chat_messages_1 = __importDefault(require("../models/chat-messages"));
+const generate_jwt_1 = require("../helpers/generate-jwt");
+const chatMessages = new chat_messages_1.default();
+const socketController = (socket, io) => __awaiter(void 0, void 0, void 0, function* () {
     // console.log(socket.handshake.headers['x-token']);
     // setInterval(() => socket.emit("hello", "server li diu hello al client"), 5000);
+    const user = yield (0, generate_jwt_1.checkJWT)(socket.handshake.headers['x-token']);
+    //! Agregar el usuario conectado
+    chatMessages.connectUser(user);
+    io.emit('usuarios-activos', chatMessages.usersArr);
+    //! Limpiar cuando alguien se desconecta
+    socket.on('disconnect', () => {
+        // chatMessages.disconnectUser(User.id);
+        io.emit('usuarios-activos', chatMessages.usersArr);
+    });
     socket.on("howareyou", (arg) => {
         console.log(arg);
     });
@@ -11,8 +35,10 @@ const socketController = (socket) => {
         console.log('Socket online');
     });
     socket.on("disconnect", () => {
-        console.log('socket offline');
+        console.log('Socket offline');
+        // chatMessages.disconnectUser(user.id);
     });
-};
+    socket.emit('recibir-mensajes', chatMessages.last10);
+});
 exports.socketController = socketController;
 //# sourceMappingURL=controller.js.map

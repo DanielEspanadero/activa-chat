@@ -31,15 +31,22 @@ const validateJWT = () => __awaiter(void 0, void 0, void 0, function* () {
     yield connectSocket();
 });
 const connectSocket = () => __awaiter(void 0, void 0, void 0, function* () {
-    const socket = (0, socket_io_client_1.io)(url, {
+    const socket = (0, socket_io_client_1.io)('http://localhost:5000', {
         'extraHeaders': {
             'x-token': localStorage.getItem('token')
         }
+    });
+    socket.on("connect", () => {
+        console.log('Socket online');
+    });
+    socket.on("disconnect", () => {
+        console.log('socket offline');
     });
 });
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     // Validate JWT
     yield validateJWT();
+    yield connectSocket();
 });
 main();
 //# sourceMappingURL=chat.js.map

@@ -1,5 +1,6 @@
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import 'dotenv/config';
+import { User } from '../models/user';
 
 export const generateAccessToken = (uid = '') => {
 
@@ -18,4 +19,30 @@ export const generateAccessToken = (uid = '') => {
             }
         });
     })
+};
+
+export const checkJWT = async (token = '') => {
+
+    try {
+
+        if (token.length < 10) {
+            return null;
+        }
+
+        const { uid }: any = jwt.verify(token, process.env.SECRETPRIVATEKEY as string);
+        const user = await User.findById(uid);
+
+        if (user) {
+            if (user.status) {
+                return user;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
+
+    } catch (error) {
+        return null;
+    }
 };

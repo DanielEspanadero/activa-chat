@@ -36,11 +36,18 @@ const validateJWT = async () => {
 };
 
 const connectSocket = async () => {
-    
-    const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(url,{
+    const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io('http://localhost:5000',{
         'extraHeaders': {
             'x-token': localStorage.getItem('token')!
         }
+    });
+
+    socket.on("connect", () => {
+        console.log('Socket online');
+    });
+
+    socket.on("disconnect", () => {
+        console.log('socket offline');
     });
 }
 
@@ -48,6 +55,8 @@ const main = async () => {
 
     // Validate JWT
     await validateJWT();
+
+    await connectSocket();
 }
 
 main();
