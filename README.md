@@ -89,6 +89,8 @@ _Next, we execute the .play() function of the newly created audio instance._
 
 ### Emojis 🙂❤️
 
+![Demo](https://github.com/DanielEspanadero/activa-chat/blob/master/docs/emojis.png)
+
 _The emojis that I have used are from an existing library, to be able to introduce them in your project you have to copy this in your HTML:_
 
 ```
