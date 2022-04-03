@@ -101,7 +101,7 @@ _The emojis that I have used are from an existing library, to be able to introdu
 <input type="text">
 ```
 
-_Once the HTML is pasted, we link a JavaScript file to the HTML and enter the following code:_
+_Once the HTML is pasted, we link a JavaScript file to the HTML and enter the next code:_
 
 ```
 const button = document.querySelector('#emoji-button');
