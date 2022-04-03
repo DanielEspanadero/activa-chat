@@ -63,6 +63,7 @@ _We will also have the option to register by entering our name, surname, email a
 ### Mobile first 📱
 
 _Currently responsive web design is a somewhat outdated practice and search engines like google prioritize Mobile first, do mobile design first and go from less to more in @media queries._
+
 ![Demo](https://github.com/DanielEspanadero/activa-chat/blob/master/docs/responsive-login.png)
 ![Demo](https://github.com/DanielEspanadero/activa-chat/blob/master/docs/responsive-chat.png)
 
