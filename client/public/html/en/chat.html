@@ -10,13 +10,17 @@
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/chat.css">
     <script type="text/javascript" src="../../dist/audios.js"></script>
+    <script type="text/javascript" src="../../dist/menu.js"></script>
 </head>
 
 <body>
     <div id="all-container">
-        <aside id="rooms-container">
-            <header class="headers">
+        <aside id="rooms-container" class="rooms-container hidden-rooms">
+            <header class="headers header-room">
                 <h1>Rooms</h1>
+                <div class="button">
+                    <img src="../../assets/img/close.png" alt="button close">
+                </div>
             </header>
             <main class="scroll aside-main" id="aside-main-left">
             </main>
@@ -51,7 +55,7 @@
                 </div>
             </footer>
         </aside>
-        <main id="chat-container">
+        <main id="chat-container" class="chat-container hidden-chat">
 
             <header class="headers" id="header-central">
                 <div id="button-rooms" class="button">
@@ -86,8 +90,11 @@
                 </form>
             </footer>
         </main>
-        <aside id="users-container">
+        <aside id="users-container" class="users-container hidden-users">
             <header class="headers">
+                <div class="button">
+                    <img src="../../assets/img/close.png" alt="button close">
+                </div>
                 <h1>Users</h1>
             </header>
             <main class="scroll aside-main" id="aside-main-right">
@@ -108,7 +115,6 @@
             document.getElementById('input-chat').value += emoji;
         });
     </script>
-
 
     <script src="http://localhost:5000/socket.io/socket.io.js"></script>
     <script src="../../dist/chat.js"></script>
