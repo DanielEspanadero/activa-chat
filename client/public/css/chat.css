@@ -87,7 +87,41 @@ body {
     box-shadow: 0px 1px 0px #516188;
 }
 
+.room-users-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #7c8cb4;
+    color: #fff;
+    font-family: 'SecularOne';
+    margin: .6em .4em;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px #000;
+}
+
+.room-users-container:hover {
+    background-color: #a9b4d4;
+}
+
+.room-users-container:active {
+    box-shadow: 2px 2px 2px #000 inset;
+}
+
+.room-users-container>img {
+    float: left;
+    margin-left: 0;
+    height: 2em;
+    margin: .5em;
+}
+
+.room-users-container>p {
+    margin: .2em;
+    float: right;
+    line-height: 3em;
+}
+
 /* Through specificity I am replacing the 20% width allocated in the headers class with the 60% allocated in the header-central id. */
+
 #header-central {
     width: 100%;
 }
@@ -209,11 +243,15 @@ body {
 }
 
 #aside-main-left {
+    position: relative;
+    margin-top: 10vh;
+    overflow-x: auto;
     border-bottom: 1px solid #516188;
     height: 50vh;
 }
 
 #aside-main-right {
+    overflow-x: auto;
     height: 90vh;
     width: 100%;
 }
