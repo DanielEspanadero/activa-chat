@@ -28,7 +28,6 @@ body {
     display: flex;
 }
 
-/*! Hasta aquí completo */
 .rooms-container {
     display: block;
     height: 100vh;
@@ -39,23 +38,25 @@ body {
     display: none;
 }
 
+.close-rooms {
+    margin-left: 5em;
+}
+
 .header-room {
     display: flex;
     flex-direction: row;
-
-    border: 1px solid red;
 }
 
 .chat-container {
+    display: none;
     position: relative;
-    display: flex;
     flex-direction: column;
     height: 100vh;
-    width: 0%;
+    width: 100%
 }
 
 .hidden-chat {
-    width: 100%;
+    display: flex;
 }
 
 .users-container {
@@ -66,6 +67,10 @@ body {
 
 .hidden-users {
     display: none;
+}
+
+.close-users {
+    margin-right: 5em;
 }
 
 .headers {
@@ -143,8 +148,6 @@ body {
 }
 
 #emoji-button {
-    /* position: relative;
-    z-index: 50; */
     margin-right: 3em;
 }
 
@@ -291,6 +294,12 @@ body {
 }
 
 @media screen and (min-width: 1000px) {
+    #chat-container {
+        display: flex;
+        height: 100vh;
+        width: 60%;
+    }
+
     #rooms-container {
         display: block;
         height: 100vh;
@@ -300,6 +309,11 @@ body {
     #users-container {
         display: block;
         height: 100vh;
+        width: 20%;
+    }
+
+    .headers {
+        height: 10vh;
         width: 20%;
     }
 
@@ -318,39 +332,8 @@ body {
     .button>img {
         height: 40px;
     }
-}
 
-@media screen and (min-width:1200px) {
-    #chat-container {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-        width: 60%;
-    }
-
-    #users-container {
-        height: 100vh;
-        width: 20%;
-    }
-
-    .headers {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        position: fixed;
-        background-color: #e2ecf6;
-        z-index: 50;
-        height: 10vh;
-        width: 20%;
-        font-family: 'SecularOne';
-        box-shadow: 0px 1px 0px #516188;
-    }
-
-    #emoji-button {
-        position: relative;
-        z-index: 50;
-        margin-left: 2em;
+    .close-button {
+        display: none;
     }
 }

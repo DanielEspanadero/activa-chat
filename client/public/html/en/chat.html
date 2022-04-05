@@ -17,8 +17,8 @@
     <div id="all-container">
         <aside id="rooms-container" class="rooms-container hidden-rooms">
             <header class="headers header-room">
-                <h1>Rooms</h1>
-                <div class="button">
+                <h2>Rooms</h2>
+                <div class="button close-rooms close-button">
                     <img src="../../assets/img/close.png" alt="button close">
                 </div>
             </header>
@@ -92,10 +92,10 @@
         </main>
         <aside id="users-container" class="users-container hidden-users">
             <header class="headers">
-                <div class="button">
+                <div class="button close-users close-button">
                     <img src="../../assets/img/close.png" alt="button close">
                 </div>
-                <h1>Users</h1>
+                <h2>Users</h2>
             </header>
             <main class="scroll aside-main" id="aside-main-right">
 
@@ -115,7 +115,6 @@
             document.getElementById('input-chat').value += emoji;
         });
     </script>
-
     <script src="http://localhost:5000/socket.io/socket.io.js"></script>
     <script src="../../dist/chat.js"></script>
     <script type="module" src="../../index.js"></script>
