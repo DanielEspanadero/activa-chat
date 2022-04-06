@@ -31,6 +31,7 @@ socket.on('mensaje-privado', () => {
 //     socket.emit("howareyou", "client li diu how are you al server");
 // }, 5000);
 sendMessage.addEventListener('click', (ev) => {
+    ev.preventDefault()
 const dibujarMensajes = (mensajes = []) => {
     let mensajesHTML = '';
 

@@ -23,7 +23,7 @@ const UserSchema = new mongoose_1.Schema({
     },
     avatar: {
         type: String,
-        default: 'https://github.com/DanielEspanadero/activa-chat/blob/master/client/public/assets/img/man.png'
+        default: 'https://github.com/DanielEspanadero/activa-chat/blob/master/client/public/assets/img/avatars/default.png'
     },
     status: {
         type: Boolean,
