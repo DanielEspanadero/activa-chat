@@ -188,6 +188,7 @@ body {
 .button {
     background-color: #00000000;
     border: none;
+    cursor: pointer;
 }
 
 .button>img {
@@ -303,6 +304,10 @@ body {
     font-family: 'SecularOne', Helvetica, sans-serif;
     margin: .2em 0 -1em 0;
     color: #000;
+}
+
+.close {
+    margin-right: 2em;
 }
 
 @media screen and (min-width:320px) {}

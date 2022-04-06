@@ -86,6 +86,9 @@
                 <div id="button-rooms" class="button">
                     <img class="users-room-button" src="../../assets/img/menu.png" alt="rooms menu">
                 </div>
+                <div class="button close">
+                    <img src="../../assets/img/exit.png" alt="boton cerrar sesion">
+                </div>
                 <h1>Activa chat</h1>
                 <div id="button-users" class="button">
                     <img class="users-room-button" src="../../assets/img/users.png" alt="users buttom">
@@ -106,7 +109,7 @@
             <footer id="footer-chat">
                 <button id="emoji-button" class="button"><img src="../../assets/img/cool.png"
                         alt="emojis button"></button>
-                <form id="messages-container">
+                <form id="messages-container" onsubmit="return addMessage(this)">
                     <input id="input-chat" type="text" placeholder="Write a message..."
                         class="input measures-input-chat">
                     <button type="submit" id="send-message" class="button">

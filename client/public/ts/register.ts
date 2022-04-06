@@ -33,4 +33,9 @@
                 });
         });
     });
+
+    if (localStorage.getItem('token')) {
+        window.location.href = '/chat';
+        // location.reload();
+    }
 })();
