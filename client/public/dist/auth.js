@@ -1,6 +1,7 @@
 "use strict";
 (() => {
     window.addEventListener('load', () => {
+        // location.reload();
         const miFormulario = document.querySelector('#login-form-container');
         const url = 'http://localhost:5000/auth/login';
         miFormulario.addEventListener('submit', (ev) => {
@@ -47,7 +48,6 @@
     });
     if (localStorage.getItem('token')) {
         window.location.href = '/chat';
-        // location.reload();
     }
 })();
 //# sourceMappingURL=auth.js.map

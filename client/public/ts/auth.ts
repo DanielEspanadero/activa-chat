@@ -1,10 +1,9 @@
 (() => {
     window.addEventListener('load', () => {
+        // location.reload();
         const miFormulario: any = document.querySelector('#login-form-container')!;
 
         const url: string = 'http://localhost:5000/auth/login'
-
-
 
         miFormulario.addEventListener('submit', (ev: any) => {
             ev.preventDefault();
@@ -31,9 +30,9 @@
                 .catch(err => {
                     console.log(err);
                 })
-
         });
-        function onSignIn(googleUser: any) {
+        
+        function onSignIn (googleUser: any) {
 
             const url = 'http://localhost:3000/auth/google';
 
@@ -56,6 +55,5 @@
 
     if (localStorage.getItem('token')) {
         window.location.href = '/chat';
-        // location.reload();
     }
 })();

@@ -109,7 +109,7 @@
             <footer id="footer-chat">
                 <button id="emoji-button" class="button"><img src="../../assets/img/cool.png"
                         alt="emojis button"></button>
-                <form id="messages-container" onsubmit="return addMessage(this)">
+                <form id="messages-container">
                     <input id="input-chat" type="text" placeholder="Write a message..."
                         class="input measures-input-chat">
                     <button type="submit" id="send-message" class="button">
@@ -183,7 +183,6 @@
         });
     </script>
     <script src="http://localhost:5000/socket.io/socket.io.js"></script>
-    <script src="../../dist/chat.js"></script>
     <script type="module" src="../../index.js"></script>
 
 </body>

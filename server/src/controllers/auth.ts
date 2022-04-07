@@ -3,6 +3,7 @@ import bcryptjs from 'bcryptjs';
 
 import { User } from "../models/user";
 import { generateAccessToken } from "../helpers/generate-jwt";
+import { googleVerify } from "../helpers/google-verify";
 
 export const login = async (req: Request, res: Response) => {
     const { email, password } = req.body;
@@ -44,6 +45,43 @@ export const login = async (req: Request, res: Response) => {
         });
     };
 };
+
+export const googleSignin = async (req: Request, res = response) => {
+    const { id_token } = req.body;
+    try {
+        const { email, name, img } = await googleVerify(id_token);
+        let user = await User.findOne({ email });
+
+        if (!user) {
+            // Tengo que crearlo
+            const data = {
+                name,
+                email,
+                password: ':P',
+                img,
+                google: true
+            };
+            user = new User(data);
+            await user.save();
+        }
+        // Si el usuario en DB
+        if (!user.status) {
+            return res.status(401).json({
+                msg: 'Hable con el administrador, usuario bloqueado'
+            });
+        }
+        // Generar el JWT
+        const token = await generateAccessToken(user.id);
+        res.json({
+            user,
+            token
+        });
+    } catch (error) {
+        res.status(400).json({
+            msg: 'Token de Google no es válido'
+        })
+    }
+}
 
 export const refreshJWT = async (req: any, res: Response) => {
     const user = req;

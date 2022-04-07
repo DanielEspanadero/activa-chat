@@ -12,10 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.refreshJWT = exports.login = void 0;
+exports.refreshJWT = exports.googleSignin = exports.login = void 0;
+const express_1 = require("express");
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const user_1 = require("../models/user");
 const generate_jwt_1 = require("../helpers/generate-jwt");
+const google_verify_1 = require("../helpers/google-verify");
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
     try {
@@ -58,6 +60,43 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     ;
 });
 exports.login = login;
+const googleSignin = (req, res = express_1.response) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id_token } = req.body;
+    try {
+        const { email, name, img } = yield (0, google_verify_1.googleVerify)(id_token);
+        let user = yield user_1.User.findOne({ email });
+        if (!user) {
+            // Tengo que crearlo
+            const data = {
+                name,
+                email,
+                password: ':P',
+                img,
+                google: true
+            };
+            user = new user_1.User(data);
+            yield user.save();
+        }
+        // Si el usuario en DB
+        if (!user.status) {
+            return res.status(401).json({
+                msg: 'Hable con el administrador, usuario bloqueado'
+            });
+        }
+        // Generar el JWT
+        const token = yield (0, generate_jwt_1.generateAccessToken)(user.id);
+        res.json({
+            user,
+            token
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            msg: 'Token de Google no es válido'
+        });
+    }
+});
+exports.googleSignin = googleSignin;
 const refreshJWT = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = req;
     // Generate JWT

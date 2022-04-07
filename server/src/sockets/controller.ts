@@ -36,5 +36,4 @@ export const socketController = async (socket: any, io: any) => {
     });
 
     socket.emit('recibir-mensajes', chatMessages.last10);
-
 }

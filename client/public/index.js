@@ -1,12 +1,15 @@
 const mainChat = document.querySelector('#mainChat');
+const closeButton = document.querySelector('.close');
+
 const sendMessage = document.querySelector('#send-message');
 const inputChat = document.querySelector('#input-chat').value;
-const closeButton = document.querySelector('.close');
+
+const url = 'http://localhost:5000';
 
 // const socket = io("http://localhost:5000");
 
 let user = null;
-let socket = null;
+const socket = io(url);
 
 // Validate localstorage token
 const validateJWT = async () => {
@@ -18,7 +21,8 @@ const validateJWT = async () => {
     };
 
     const resp = await fetch(url, {
-        headers: { 'x-token': token }
+        headers: { 'x-token': token },
+        mode: 'no-cors'
     })
 
     const { user: userDB, token: tokenDB } = await resp.json()
@@ -29,13 +33,13 @@ const validateJWT = async () => {
     await connectSocket();
 };
 
-const conectarSocket = async () => {
+const conectSocket = async () => {
 
-    socket = io({
-        'extraHeaders': {
-            'x-token': localStorage.getItem('token')
-        }
-    });
+    // socket = io({
+    //     'extraHeaders': {
+    //         'x-token': localStorage.getItem('token')
+    //     }
+    // });
 
     socket.on('connect', () => {
         console.log('Sockets online')
@@ -66,8 +70,8 @@ closeButton.addEventListener('click', () => {
 
 });
 
-sendMessage.addEventListener('submit', (e) => { 
-    e.preventDefault();
+sendMessage.addEventListener('submit', (ev) => {
+    ev.preventDefault();
     const dibujarMensajes = (mensajes = []) => {
 
         let mensajesHTML = '';
@@ -78,7 +82,7 @@ sendMessage.addEventListener('submit', (e) => {
                     <img class="avatar" src="../../assets/img/avatars/01.png" alt="avatar">
                     <div>
                         <p class="name">Daniel Españadero</p>
-                        <p class="text-message">${mensaje}</p>
+                        <p class="text-message">${inputChat}</p>
                         <p class="data">Lunes 21 a las 23:00h</p>
                     </div>
                 </div>
@@ -87,26 +91,27 @@ sendMessage.addEventListener('submit', (e) => {
             mainChat.innerHTML = mensajesHTML
         });
     }
+
+    dibujarMensajes()
 });
 
 
 
-    const main = async () => {
+const main = async () => {
 
-        // Validate JWT
-        await validateJWT();
+    // Validate JWT
+    await validateJWT();
+    await connectSocket();
+}
 
-        // await connectSocket();
-    }
-
-    main();
+main();
 
 
-(() => {
-    gapi.load('auth2', () => {
-        gapi.auth2.init();
-        main();
-    });
-})();
+// (() => {
+//     gapi.load('auth2', () => {
+//         gapi.auth2.init();
+//         main();
+//     });
+// })();
 
     //   socket.on('recibir-mensajes', dibujarMensajes);

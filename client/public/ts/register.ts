@@ -1,6 +1,5 @@
 (() => {
     window.addEventListener('load', () => {
-
         const login: any = document.querySelector('#login-form-container')!;
         const URL: string = 'http://localhost:5000/register';
 
@@ -36,6 +35,5 @@
 
     if (localStorage.getItem('token')) {
         window.location.href = '/chat';
-        // location.reload();
     }
 })();
