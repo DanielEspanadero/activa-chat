@@ -36,4 +36,19 @@ export const socketController = async (socket: any, io: any) => {
     });
 
     socket.emit('recibir-mensajes', chatMessages.last10);
+
+
+
+
+    let messages: any = [];
+    io.on("connection", function (socket: any) {
+        console.log("Alguien se ha conectado con Sockets");
+        socket.emit("messages", messages);
+
+        socket.on("new-message", function (data: any) {
+            messages.push(data);
+
+            io.sockets.emit("messages", messages);
+        });
+    });
 }
