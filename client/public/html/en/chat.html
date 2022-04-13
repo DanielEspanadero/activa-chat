@@ -7,19 +7,183 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activa Chat</title>
     <link rel="icon" href="../../assets/img/activa-ico.ico">
-    <script src="../../sockets.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/chat.css">
+    <script type="text/javascript" src="../../dist/audios.js"></script>
+    <script type="text/javascript" src="../../dist/menu.js"></script>
 </head>
 
 <body>
-    <h1>My App</h1>
-    <div id="messages"></div>
-    <br />
-    <form onsubmit="addMessage(this)">
-        <input type="text" id="texto" placeholder="Cuéntanos algo..." />
-        <input type="submit" value="Enviar!" />
-    </form>
+    <div id="all-container">
+        <aside id="rooms-container" class="rooms-container hidden-rooms">
+            <header class="headers header-room">
+                <h2>Rooms</h2>
+                <div class="button close-rooms close-button">
+                    <img src="../../assets/img/close.png" alt="button close">
+                </div>
+            </header>
+            <main class="scroll aside-main" id="aside-main-left">
+                <div class="room-users-container">
+                    <img src="../../assets/img/salas-chat.png" alt="rooms chat image">
+                    <p class="room">Room 1</p>
+                </div>
+                <div class="room-users-container">
+                    <img src="../../assets/img/salas-chat.png" alt="rooms chat image">
+                    <p class="room">Room 2</p>
+                </div>
+                <div class="room-users-container">
+                    <img src="../../assets/img/salas-chat.png" alt="rooms chat image">
+                    <p class="room">Room 3</p>
+                </div>
+                <div class="room-users-container">
+                    <img src="../../assets/img/salas-chat.png" alt="rooms chat image">
+                    <p class="room">Room 4</p>
+                </div>
+                <div class="room-users-container">
+                    <img src="../../assets/img/salas-chat.png" alt="rooms chat image">
+                    <p class="room">Room 5</p>
+                </div>
+                <div class="room-users-container">
+                    <img src="../../assets/img/salas-chat.png" alt="rooms chat image">
+                    <p class="room">Room 6</p>
+                </div>
 
+            </main>
+            <footer class="music-zone scroll">
+                <div class="sound">
+                    <button id="imagine-play" class="play-pause"><img src="../../assets/img/play.png"
+                            alt="play"></button>
+                    <button id="imagine-pause" class="play-pause"><img src="../../assets/img/pausa.png"
+                            alt="pausa"></button>
+                    <p class="sound-name">John Lennon - Imagine</p>
+                </div>
+                <div class="sound">
+                    <button id="dancing-play" class="play-pause"><img src="../../assets/img/play.png"
+                            alt="play"></button>
+                    <button id="dancing-pause" class="play-pause"><img src="../../assets/img/pausa.png"
+                            alt="pausa"></button>
+                    <p class="sound-name">ABBA - Dancing Queen</p>
+                </div>
+                <div class="sound">
+                    <button id="nirvana-play" class="play-pause"><img src="../../assets/img/play.png"
+                            alt="play"></button>
+                    <button id="nirvana-pause" class="play-pause"><img src="../../assets/img/pausa.png"
+                            alt="pausa"></button>
+                    <p class="sound-name">Nirvana - Smells Like Teen Spirit</p>
+                </div>
+                <div class="sound">
+                    <button id="maybellene-play" class="play-pause"><img src="../../assets/img/play.png"
+                            alt="play"></button>
+                    <button id="maybellene-pause" class="play-pause"><img src="../../assets/img/pausa.png"
+                            alt="pausa"></button>
+                    <p class="sound-name">Chuck Berry - Maybellene</p>
+                </div>
+            </footer>
+        </aside>
+        <main id="chat-container" class="chat-container hidden-chat">
+
+            <header class="headers" id="header-central">
+                <div id="button-rooms" class="button">
+                    <img class="users-room-button" src="../../assets/img/menu.png" alt="rooms menu">
+                </div>
+                <div class="button close">
+                    <img src="../../assets/img/exit.png" alt="boton cerrar sesion">
+                </div>
+                <h1>Activa chat</h1>
+                <div id="button-users" class="button">
+                    <img class="users-room-button" src="../../assets/img/users.png" alt="users buttom">
+                </div>
+            </header>
+
+            <main id="main-chat" class="scroll">
+                <div class="message">
+                    <img class="avatar" src="../../assets/img/avatars/01.png" alt="avatar">
+                    <div>
+                        <p class="name">Daniel Españadero</p>
+                        <p class="text-message">Hola</p>
+                        <p class="data">Lunes 21 a las 23:00h</p>
+                    </div>
+                </div>
+            </main>
+
+            <footer id="footer-chat">
+                <button id="emoji-button" class="button"><img src="../../assets/img/cool.png"
+                        alt="emojis button"></button>
+                <form id="messages-container">
+                    <input id="input-chat" type="text" placeholder="Write a message..."
+                        class="input measures-input-chat">
+                    <button type="submit" id="send-message" class="button">
+                        <img src="../../assets/img/send-button.png" alt="send button">
+                    </button>
+                </form>
+            </footer>
+        </main>
+        <aside id="users-container" class="users-container hidden-users">
+            <header class="headers">
+                <div class="button close-users close-button">
+                    <img src="../../assets/img/close.png" alt="button close">
+                </div>
+                <h2>Users</h2>
+            </header>
+            <main class="scroll aside-main" id="aside-main-right">
+                <div class="room-users-container">
+                    <img src="../../assets/img/avatars/01.png" alt="users chat image">
+                    <p class="room">Daniel Españadero</p>
+                </div>
+                <div class="room-users-container">
+                    <img src="../../assets/img/avatars/02.png" alt="users chat image">
+                    <p class="room">Name User</p>
+                </div>
+                <div class="room-users-container">
+                    <img src="../../assets/img/avatars/03.png" alt="users chat image">
+                    <p class="room">Name User</p>
+                </div>
+                <div class="room-users-container">
+                    <img src="../../assets/img/avatars/04.png" alt="users chat image">
+                    <p class="room">Name User</p>
+                </div>
+                <div class="room-users-container">
+                    <img src="../../assets/img/avatars/05.png" alt="users chat image">
+                    <p class="room">Name User</p>
+                </div>
+                <div class="room-users-container">
+                    <img src="../../assets/img/avatars/06.png" alt="users chat image">
+                    <p class="room">Name User</p>
+                </div>
+                <div class="room-users-container">
+                    <img src="../../assets/img/avatars/07.png" alt="users chat image">
+                    <p class="room">Name User</p>
+                </div>
+                <div class="room-users-container">
+                    <img src="../../assets/img/avatars/08.png" alt="users chat image">
+                    <p class="room">Name User</p>
+                </div>
+                <div class="room-users-container">
+                    <img src="../../assets/img/avatars/09.png" alt="users chat image">
+                    <p class="room">Name User</p>
+                </div>
+                <div class="room-users-container">
+                    <img src="../../assets/img/avatars/default.png" alt="users chat image">
+                    <p class="room">Name User</p>
+                </div>
+            </main>
+        </aside>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.0.3/dist/index.min.js"></script>
+    <script>
+        const button = document.querySelector('#emoji-button');
+        const picker = new EmojiButton();
+        button.addEventListener('click', () => {
+            picker.togglePicker(button);
+        });
+        picker.on('emoji', emoji => {
+            document.getElementById('input-chat').value += emoji;
+        });
+    </script>
     <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+    <script type="module" src="../../index.js"></script>
+
 </body>
 
 </html>

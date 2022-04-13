@@ -1,6 +1,7 @@
 import ChatMessages from '../models/chat-messages';
 import { User } from '../models/user';
 import { checkJWT } from '../helpers/generate-jwt';
+import { formatMessage } from '../helpers/messages';
 
 const chatMessages = new ChatMessages();
 
@@ -12,43 +13,4 @@ export const socketController = async (socket: any, io: any) => {
 
     const user = await checkJWT(socket.handshake.headers['x-token']);
 
-    //! Agregar el usuario conectado
-    chatMessages.connectUser(user);
-    io.emit('usuarios-activos', chatMessages.usersArr)
-
-    //! Limpiar cuando alguien se desconecta
-    socket.on('disconnect', () => {
-        // chatMessages.disconnectUser(User.id);
-        io.emit('usuarios-activos', chatMessages.usersArr);
-    })
-
-    socket.on("howareyou", (arg: any) => {
-        console.log(arg);
-    });
-
-    socket.on("connect", () => {
-        console.log('Socket online');
-    });
-
-    socket.on("disconnect", () => {
-        console.log('Socket offline');
-        // chatMessages.disconnectUser(user.id);
-    });
-
-    socket.emit('recibir-mensajes', chatMessages.last10);
-
-
-
-
-    let messages: any = [];
-    io.on("connection", function (socket: any) {
-        console.log("Alguien se ha conectado con Sockets");
-        socket.emit("messages", messages);
-
-        socket.on("new-message", function (data: any) {
-            messages.push(data);
-
-            io.sockets.emit("messages", messages);
-        });
-    });
 }
