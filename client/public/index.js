@@ -70,35 +70,22 @@ closeButton.addEventListener('click', () => {
 
 });
 
-sendMessage.addEventListener('submit', (ev) => {
-    ev.preventDefault();
+// sendMessage.addEventListener('submit', (ev) => {
+//     ev.preventDefault();
 
-    // Output message to DOM
-    function outputMessage(message) {
-        const div = document.createElement('div');
-        div.classList.add('message');
-        const p = document.createElement('p');
-        p.classList.add('meta');
-        p.innerText = message.username;
-        p.innerHTML += `<span>${message.time}</span>`;
-        div.appendChild(p);
-        const para = document.createElement('p');
-        para.classList.add('text');
-        para.innerText = message.text;
-        div.appendChild(para);
-        document.querySelector('.chat-messages').appendChild(div);
-    }
+//     function renderMessage(data) {
+//         let html = data
+//             .map(function (elem) {
+//                 return `<div>
+//               <em>${elem.text}</em>
+//             </div>`;
+//             })
+//             .join(' ');
 
-    outputMessage(message);
+//         document.getElementById('messages').innerHTML = html;
+//     };
 
-    socket.on('message', (message) => {
-        console.log(message);
-        outputMessage(message);
-
-        // Scroll down
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    });
-});
+// });
 
 
 
@@ -119,4 +106,22 @@ main();
 //     });
 // })();
 
-    //   socket.on('recibir-mensajes', dibujarMensajes);
+//   socket.on('recibir-mensajes', dibujarMensajes);
+
+// seleccionar element de HTML
+var boto2 = document.querySelector(`#button2`)
+var input = document.querySelector("#text")
+var coses = document.querySelector("#coses")
+
+
+boto2.addEventListener("click", () => {
+    coses.innerHTML += `
+    <div class="message">
+        <img class="avatar" src="../../assets/img/avatars/01.png" alt="avatar">
+        <div>
+            <p class="name">Daniel Españadero</p>
+            <p class="text-message">${input.value}</p>
+            <p class="data">${new Date().toDateString() }</p>
+        </div>
+    </div>` // afegeix a dins l'etiqueta
+})
